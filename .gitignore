@@ -1,0 +1,29 @@
+.DS_Store
+.idea/
+
+# Ignore user specific IDEA components
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/codeStyleSettings.xml
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+
+*.aux
+*.bbl
+*.blg
+*.loh
+*.nlo
+*.out
+*.spl
+*.synctex.gz
+*.log
