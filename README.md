@@ -1,2 +1,2 @@
-# Higher-ODE-Response
-Dynamic response of a combined beam and spring-mass system under moving load: A closed-form solution using higher-order ordinary differential equations
+# DSM-SOVE-plate
+The dynamic stiffness matrix based on the extended separation-of-variables type solutions for the free vibration of orthotropic rectangular thin plates
