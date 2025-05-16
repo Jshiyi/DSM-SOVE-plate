@@ -109,7 +109,7 @@ To resolve the fully clamped plate problem, \citet{liu2015exact} suggested that 
 However, the solutions are not explicit and closed-form, but are expressed in an infinite series form, where a sufficient number of truncation terms is required to ensure accuracy.
 
 
-Inspired by the Navier and Levy solutions, \citet{xing2009new} proposed the separation-of-variables (SOV) method, which provides concise and explicit eigensolutions.
+Inspired by the Navier and Levy solutions, \citet{xing2009new} proposed the SOV method, which provides concise and explicit eigensolutions.
 The mode shape function has a separable form, $\phi(x) \psi(y)$, requiring only one $\phi(x)$ and one $\psi(y)$ for each mode order, allowing each eigenvalue equation to be explicitly expressed.
 However, this SOV method is not suitable to deal with plates with free boundary conditions.
 Therefore, an extended SOV method \cite{xing2018overall, xing2020extended} based on the Rayleigh quotient was proposed to accommodate plates with all four classical boundary conditions, i.e., simply supported, clamped, guided, and free.
@@ -135,7 +135,7 @@ In addition, a novel numerical technique has been proposed to compute the mode s
 	\caption{\small The orthotropic rectangular plate with all edges elastically restrained.} 
 	\label{fig:platemode}
 \end{figure}
-Consider a thin orthotropic rectangular plate of length \(2a\) and width \(2b\), with all four edges restrained by vertical translational springs \(k^v\) and rotational springs \(k^r\), as shown in \Cref{fig:platemode}. 
+Consider a thin orthotropic rectangular plate of length $2a$ and width $2b$, with all four edges restrained by vertical translational springs $k^v$ and rotational springs $k^r$, as shown in \Cref{fig:platemode}. 
 The coordinate origin is located at the center of the plate.
 
 The governing differential equation for the free vibration of a thin orthotropic plate is given by \citep{xing2020improved}:  
@@ -144,17 +144,17 @@ The governing differential equation for the free vibration of a thin orthotropic
 	D_{11}\frac{\partial^4w}{\partial \xi^4} + 2D_3\alpha^2\frac{\partial^4w}{\partial \xi^2 \partial \eta^2} + D_{22}\alpha^4\frac{\partial^4w}{\partial \eta^4} = \rho h\alpha^4\omega^2w,
 \end{equation}
 %
-where \( \alpha = a / b \) is the aspect ratio; \( \xi = x / a \) and \( \eta = y / b \) are the normalized coordinates,
+where $ \alpha = a / b $ is the aspect ratio; $ \xi = x / a $ and $ \eta = y / b $ are the normalized coordinates,
 and the bending stiffness parameters are defined as:
 %
 \begin{equation}\label{eq:bd_stiff}
 	\begin{split}
-		&D_{11} = \frac{E_1h^3}{12(1-v_{12}v_{21})}, \quad D_{22} = \frac{E_2h^3}{12(1-v_{12}v_{21})}, \\  
+		&D_{11} = \frac{E_1h^3}{12(1-v_{12}v_{21})}, \qquad D_{22} = \frac{E_2h^3}{12(1-v_{12}v_{21})}, \\  
 		&D_{66} = \frac{G_{12}h^3}{12}, \quad D_{12} = v_{12}D_{22} = v_{21}D_{11}, \quad D_3 = D_{12} + 2D_{66},
 	\end{split}
 \end{equation}
 %
-where \(\rho\) and \(h\) denote the mass density and thickness of the plate, respectively; \(E_1\) and \(E_2\) are the Young’s moduli in the \(x\)- and \(y\)-directions, respectively; \(G_{12}\) is the shear modulus, and \(v_{12}\) and \(v_{21}\) are the Poisson’s ratios.
+where $\rho$ and $h$ denote the mass density and thickness of the plate, respectively; $E_1$ and $E_2$ are the Young’s moduli in the $x$- and $y$-directions, respectively; $G_{12}$ is the shear modulus, and $v_{12}$ and $v_{21}$ are the Poisson’s ratios.
 
 Instead of solving the free vibration of the thin orthotropic plate using \Cref{eq:governing_EOM}, it is suggested that the vibration of the thin plate can also be solved using the Rayleigh quotient variational principle \cite{xing2018overall}:
 %
@@ -164,7 +164,7 @@ Instead of solving the free vibration of the thin orthotropic plate using \Cref{
 	\end{split}
 \end{equation}
 %
-where \(\delta\) denotes variation, \(U_{mag}\) is the magnitude of the potential energy of the plate, and \(\omega^2 T_0\) represents the magnitude of the kinetic energy of the plate.
+where $\delta$ denotes variation, $U_{mag}$ is the magnitude of the potential energy of the plate, and $\omega^2 T_0$ represents the magnitude of the kinetic energy of the plate.
 The potential energy of the plate can be expressed as \cite{xing2020extended}:
 %
 \begin{equation}\label{eq:poten_energy}
@@ -182,9 +182,9 @@ And the kinetic energy is:
 	\end{split}
 \end{equation}
 
-Assuming the solution of the deflection \( W(x, y; t) = w(x, y) e^{i \omega t} \) for harmonic plate motion, 
-where \( \ii = \sqrt{-1} \), \( w(x, y) \) is the mode shape, and \( \omega \) is the radial frequency.  
-By substituting \( W(x, y; t) = w(x, y) e^{i \omega t} \) into \Cref{eq:poten_energy,eq:kine_energy} and expressing the system in dimensionless coordinates, we have:
+Assuming the solution of the deflection $ W(x, y; t) = w(x, y) e^{i \omega t} $ for harmonic plate motion, 
+where $ \ii = \sqrt{-1} $, $ w(x, y) $ is the mode shape, and $ \omega $ is the radial frequency.  
+By substituting $ W(x, y; t) = w(x, y) e^{i \omega t} $ into \Cref{eq:poten_energy,eq:kine_energy} and expressing the system in dimensionless coordinates, we have:
 %
 \begin{equation}\label{eq:poten_energy_mag}
 	\begin{split}
@@ -201,13 +201,13 @@ and
 	\end{split},
 \end{equation}
 %
-The separable form of the mode shape function \( w(\xi, \eta) \) is given by:
+The separable form of the mode shape function $ w(\xi, \eta)$ is given by:
 %
 \begin{equation}\label{eq:displace_func}
 	w(\xi, \eta) = \phi(\xi) \psi(\eta),
 \end{equation}
 %
-where \( \phi(\xi) \) and \( \psi(\eta) \) can be expressed as:
+where $ \phi(\xi) $ and $\psi(\eta) $ can be expressed as:
 \begin{subequations}\label{eq:phi_psi_solution}
 	\begin{align}
 		\phi(\xi) &= A_1 \sin{(\alpha_1 \xi)} + A_2 \cos{(\alpha_1 \xi)} + A_3 \sinh{(\beta_1 \xi)} + A_4 \cosh{(\beta_1 \xi)},\label{eq:phi_solution1}\\
@@ -219,34 +219,34 @@ Based on \Cref{eq:Rayleigh}, the frequencies $\omega_x$ and $\omega_y$, correspo
 
 \subsection{Dynamic stiffness matrix corresponding to $\omega_x$}\label{sec:DSMx}
 For given general homogeneous boundary conditions, we can first assume that the mode shape $\psi(\eta)$ corresponding to the $y$-direction is known. 
-Supposing the edges of the plate in both the \(x\)- and \(y\)-directions are elastically restrained by homogeneous vertical translational and rotational springs.
-The vertical translational and rotational springs at the \(\xi = -1\) end are defined as \(k^v_{\xi = -1}\) and \(k^r_{\xi = -1}\), respectively, and at the \(\xi = 1\) end as \(k^v_{\xi = 1}\) and \(k^r_{\xi = 1}\), respectively. 
-Thus, the potential energy along the supported edge in the \(x\)-direction can be expressed by:
+Supposing the edges of the plate in both the $x$- and $y$-directions are elastically restrained by homogeneous vertical translational and rotational springs.
+The vertical translational and rotational springs at the $\xi = -1$ end are defined as $k^v_{\xi = -1}$ and $k^r_{\xi = -1}$, respectively, and at the $\xi = 1$ end as $k^v_{\xi = 1}$ and $k^r_{\xi = 1}$, respectively. 
+Thus, the potential energy along the supported edge in the $x$-direction can be expressed by:
 %
 \begin{equation}\label{eq:poten_energy_edgex}
 	\begin{split}
 		U^{II} &=  \int\left[k^r_{\xi=-1} \left( \frac{\partial W}{\partial x} \right)^2 + k^v_{\xi=-1} \left( W \right)^2\right]_{x=-a} \id y\\
-		&\quad +  \int\left[k^r_{\xi=1} \left( \frac{\partial W}{\partial x} \right)^2 + k^v_{\xi=1} \left( W \right)^2\right]_{x=a} \id y.
+		&\qquad +  \int\left[k^r_{\xi=1} \left( \frac{\partial W}{\partial x} \right)^2 + k^v_{\xi=1} \left( W \right)^2\right]_{x=a} \id y.
 	\end{split}
 \end{equation}
 %
-From \Cref{eq:poten_energy_edgex}, the magnitude of total potential energy along the edges in the \(x\)-direction is obtained as:
+From \Cref{eq:poten_energy_edgex}, the magnitude of total potential energy along the edges in the $x$-direction is obtained as:
 %
 \begin{equation}\label{eq:poten_energy_edgex2}
 	\begin{split}
 		U^{II}_{mag} &= ab \int\left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=-1}}{a} \left( w \right)^2\right]_{\xi=-1} \, \id \eta \\
-		&\quad + ab \int\left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( w \right)^2\right]_{\xi=1} \, \id \eta.
+		&\qquad + ab \int\left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( w \right)^2\right]_{\xi=1} \, \id \eta.
 	\end{split}
 \end{equation}
 %
-The magnitude of potential energy of the plate in the \(x\)-direction can be obtained from \Cref{eq:poten_energy_mag,eq:poten_energy_edgex2} as:
+The magnitude of potential energy of the plate in the $x$-direction can be obtained from \Cref{eq:poten_energy_mag,eq:poten_energy_edgex2} as:
 %
 \begin{equation}\label{eq:poten_energy_tolx}
 	\begin{split}
 		U_{mag} &= U^{I}_{mag} + U^{II}_{mag} \\
 		&= \frac{ab}{2} \iint \left[ \frac{D_{11}}{a^4} \left( \frac{\partial^2 w}{\partial \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2} \frac{\partial^2 w}{\partial \xi^2} \frac{\partial^2 w}{\partial \eta^2} + \frac{D_{22}}{b^4} \left( \frac{\partial^2 w}{\partial \eta^2} \right)^2 \right. \\
-		&\quad \left.  + \frac{4 D_{66}}{a^2 b^2} \left( \frac{\partial^2 w}{\partial \xi \partial \eta} \right)^2 \right] \, \id\xi \, \id\eta + ab \int \left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( w \right)^2 \right]_{\xi=1} \, \id \eta \\
-		&\quad  + ab \int \left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=-1}}{a} \left( w \right)^2 \right]_{\xi=-1} \, \id \eta
+		&\qquad \left.  + \frac{4 D_{66}}{a^2 b^2} \left( \frac{\partial^2 w}{\partial \xi \partial \eta} \right)^2 \right] \, \id\xi \, \id\eta + ab \int \left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( w \right)^2 \right]_{\xi=1} \, \id \eta \\
+		&\qquad  + ab \int \left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=-1}}{a} \left( w \right)^2 \right]_{\xi=-1} \, \id \eta
 	\end{split}
 \end{equation}
 %
@@ -256,8 +256,8 @@ By substituting \Cref{eq:displace_func} into \Cref{eq:poten_energy_tolx}, we hav
 	\begin{split}
 		U_{mag}&=U^{I}_{mag}+U^{II}_{mag}\\
 		&=\frac{ab}{2} \int_{-1}^{1} \left[ \frac{D_{11}}{a^4}I_1 \left( \frac{\id^2\phi }{\id \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2}I_2 \frac{\id^2\phi }{\id \xi^2}\phi  + \frac{D_{22}}{b^4}I_4  \phi^2 \right. \\
-		&\quad \left. + \frac{4 D_{66}}{a^2 b^2}I_3 \left( \frac{\id \phi }{\id \xi}\right)^2 \right] \, \id\xi +abI_1 \left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\id \phi}{\id \xi} \right)^2+ \frac{k^v_{\xi=-1}}{a} \left( \phi \right)^2\right]_{\xi=-1}\\
-		&\quad+abI_1 \left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\id \phi}{\id \xi} \right)^2+ \frac{k^v_{\xi=1}}{a} \left( \phi \right)^2\right]_{\xi=1},
+		&\qquad \left. + \frac{4 D_{66}}{a^2 b^2}I_3 \left( \frac{\id \phi }{\id \xi}\right)^2 \right] \, \id\xi +abI_1 \left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\id \phi}{\id \xi} \right)^2+ \frac{k^v_{\xi=-1}}{a} \left( \phi \right)^2\right]_{\xi=-1}\\
+		&\qquad+abI_1 \left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\id \phi}{\id \xi} \right)^2+ \frac{k^v_{\xi=1}}{a} \left( \phi \right)^2\right]_{\xi=1},
 	\end{split}
 \end{equation}
 %
@@ -272,7 +272,7 @@ where the integral parameters are defined as:
 	\end{split}  
 \end{equation}   
 %
-By taking \Cref{eq:displace_func} into account, the coefficient \(T_0\) of the kinetic energy from \Cref{eq:kine_energy_mag} for the plate can be expressed as:
+By taking \Cref{eq:displace_func} into account, the coefficient $T_0$ of the kinetic energy from \Cref{eq:kine_energy_mag} for the plate can be expressed as:
 %
 \begin{equation}\label{eq:kine_energyx}
 	\begin{split}
@@ -288,32 +288,32 @@ Take the Rayleigh principle in the form:
 	\end{split}
 \end{equation}
 %
-By substituting \Cref{eq:poten_energy_tolx2,eq:kine_energyx} into \Cref{eq:Rayleighx}, and relieving \(\delta \phi\) and \(\delta\frac{\id  \phi}{\id \xi}\) in \Cref{eq:Rayleighx} by variation calculus, yields:
+By substituting \Cref{eq:poten_energy_tolx2,eq:kine_energyx} into \Cref{eq:Rayleighx}, and relieving $\delta \phi$ and $\delta\frac{\id  \phi}{\id \xi}$ in \Cref{eq:Rayleighx} by variation calculus, yields:
 %
 \begin{equation}\label{eq:Rayleighx2}
 	\begin{split}
 		0 &= \int_{-1}^{1} \bigg[ \frac{D_{11}}{a^4} I_1 \frac{\id^4 \phi}{\id \xi^4} 
 		+ \bigg( \frac{2D_{12}}{a^2b^2} I_2 - \frac{4D_{66}}{a^2b^2} I_3 \bigg) \frac{\id^2 \phi}{\id \xi^2} \\
-		&\quad + \bigg( \frac{D_{22}}{b^4} I_4 - \omega_x^2 \rho h I_1 \bigg) \phi \bigg] \delta \phi \, \id \xi \\
-		&\quad + \frac{2k^v_{\xi=-1}}{a} I_1 \big(\phi \delta \phi\big)_{\xi=-1} 
+		&\qquad + \bigg( \frac{D_{22}}{b^4} I_4 - \omega_x^2 \rho h I_1 \bigg) \phi \bigg] \delta \phi \, \id \xi \\
+		&\qquad + \frac{2k^v_{\xi=-1}}{a} I_1 \big(\phi \delta \phi\big)_{\xi=-1} 
 		+ \frac{2k^v_{\xi=1}}{a} I_1 \big(\phi \delta \phi\big)_{\xi=1} \\
-		&\quad + \bigg[ \bigg( \frac{4D_{66}}{a^2b^2} I_3 - \frac{D_{12}}{a^2b^2} I_2 \bigg) \frac{\id \phi}{\id \xi} 
+		&\qquad + \bigg[ \bigg( \frac{4D_{66}}{a^2b^2} I_3 - \frac{D_{12}}{a^2b^2} I_2 \bigg) \frac{\id \phi}{\id \xi} 
 		- \frac{D_{11}}{a^4} I_1 \frac{\id^3 \phi}{\id \xi^3} \bigg] \delta \phi \Big|^{\xi=1}_{\xi=-1} \\
-		&\quad + \bigg( \frac{D_{12}}{a^2b^2} I_2 \phi + \frac{D_{11}}{a^4} I_1 \frac{\id^2 \phi}{\id \xi^2} \bigg) 
+		&\qquad + \bigg( \frac{D_{12}}{a^2b^2} I_2 \phi + \frac{D_{11}}{a^4} I_1 \frac{\id^2 \phi}{\id \xi^2} \bigg) 
 		\delta\frac{\id  \phi}{\id \xi} \Big|^{\xi=1}_{\xi=-1} \\
-		&\quad + \frac{2k^r_{\xi=-1}}{a^3} I_1 \bigg(\frac{\id \phi}{\id \xi}\delta \frac{\id \phi}{\id \xi}\bigg)_{\xi=-1} 
+		&\qquad + \frac{2k^r_{\xi=-1}}{a^3} I_1 \bigg(\frac{\id \phi}{\id \xi}\delta \frac{\id \phi}{\id \xi}\bigg)_{\xi=-1} 
 		+ \frac{2k^r_{\xi=1}}{a^3} I_1 \bigg(\frac{\id \phi}{\id \xi} \delta\frac{\id \phi}{\id \xi}\bigg)_{\xi=1}.
 	\end{split}
 \end{equation}
 %
-Thus, the governing differential equation in the \( x \)-direction can be obtained from the integration part in \Cref{eq:Rayleighx2}:
+Thus, the governing differential equation in the $ x $-direction can be obtained from the integration part in \Cref{eq:Rayleighx2}:
 %
 \begin{equation}\label{eq:ODEx}
 		\frac{\id^4 \phi}{\id \xi^4}+ 2\alpha^2\left(\frac{D_{12}I_2}{D_{11}I_1}-2\frac{D_{66}I_3}{D_{11}I_1}\right)\frac{\id^2 \phi}{\id \xi^2}+\left(\alpha^4\frac{D_{22}I_4}{D_{11}I_1}-a^4\Omega_x^4\right)\phi=0,
 \end{equation}
 %
-where \(\Omega_x = \sqrt[4]{\omega_x^2 \rho h / D_{11}}\).
-By substituting \(\phi(\xi) = A e^{\mu \xi}\) into \Cref{eq:ODEx}, yields:
+where $\Omega_x = \sqrt[4]{\omega_x^2 \rho h / D_{11}}$.
+By substituting $\phi(\xi) = A e^{\mu \xi}$ into \Cref{eq:ODEx}, yields:
 %
 \begin{equation}\label{eq:ODEx2}
 	\begin{split}
@@ -321,7 +321,7 @@ By substituting \(\phi(\xi) = A e^{\mu \xi}\) into \Cref{eq:ODEx}, yields:
 	\end{split}
 \end{equation}
 %
-The solution for \(\mu\) can be expressed as:
+The solution for $\mu$ can be expressed as:
 %
 \begin{equation}\label{eq:mu}
 	\begin{split}
@@ -338,30 +338,30 @@ where,
 	\end{align}
 \end{subequations}
 %
-The boundary conditions along the edges in the \(x\)-direction can be obtained from the remaining \(\delta \phi\) and \(\delta \frac{\id \phi}{\id \xi}\) parts in \Cref{eq:Rayleighx2}. 
-The shear force equilibrium can be obtained from the \(\delta \phi\) part:
+The boundary conditions along the edges in the $x$-direction can be obtained from the remaining $\delta \phi$ and $\delta \frac{\id \phi}{\id \xi}$ parts in \Cref{eq:Rayleighx2}. 
+The shear force equilibrium can be obtained from the $\delta \phi$ part:
 %
 \begin{equation}\label{eq:inertial_forcex}
 	\begin{split}
 		&\left[ \left( \frac{4D_{66}}{a^2b^2} I_3 - \frac{D_{12}}{a^2b^2} I_2 \right) \frac{\id \phi}{\id \xi} 
 		- \frac{D_{11}}{a^4} I_1 \frac{\id^3 \phi}{\id \xi^3} \right] \Big|^{\xi=1}_{\xi=-1}\\
-		&\quad+ \frac{2k^v_{\xi=-1}}{a} I_1 \left(\phi\right)_{\xi=-1}
+		&\qquad+ \frac{2k^v_{\xi=-1}}{a} I_1 \left(\phi\right)_{\xi=-1}
 		 + \frac{2k^v_{\xi=1}}{a} I_1 \left(\phi\right)_{\xi=1} = 0,
 	\end{split}
 \end{equation}
 %
-and from the \(\delta \frac{\id \phi}{\id \xi}\) part, the bending moment equilibrium:
+and from the $\delta \frac{\id \phi}{\id \xi}$ part, the bending moment equilibrium:
 %
 \begin{equation}\label{eq:inertial_forcex2}
 	\begin{split}	
 		\left( \frac{D_{12}}{a^2b^2} I_2 \phi + \frac{D_{11}}{a^4} I_1 \frac{\partial^2 \phi}{\partial \xi^2} \right) 
 		\Big|^{\xi=1}_{\xi=-1} 
 		&+ \frac{2k^r_{\xi=-1}}{a^3} I_1 \left(\frac{\partial \phi}{\partial \xi}\right)_{\xi=-1} \\
-		&+ \frac{2k^r_{\xi=1}}{a^3} I_1 \left(\frac{\partial \phi}{\partial \xi}\right)_{\xi=1} = 0.
+		& \qquad\frac{2k^r_{\xi=1}}{a^3} I_1 \left(\frac{\partial \phi}{\partial \xi}\right)_{\xi=1} = 0.
 	\end{split}
 \end{equation}
 %
-Thus, we can obtain the shear force and bending moment equilibrium along the edges \(\xi = -1\) and \(\xi = 1\) from \Cref{eq:inertial_forcex,eq:inertial_forcex2}, respectively, as:
+Thus, we can obtain the shear force and bending moment equilibrium along the edges $\xi = -1$ and $\xi = 1$ from \Cref{eq:inertial_forcex,eq:inertial_forcex2}, respectively, as:
 %
 \begin{subequations}\label{eq:boundaryx}
 	\begin{align}
@@ -374,7 +374,7 @@ Thus, we can obtain the shear force and bending moment equilibrium along the edg
 	\end{align}
 \end{subequations}
 %
-Substituting \Cref{eq:phi_solution1} into \Cref{eq:boundaryx}, and denoting \( k^{v*}_{\xi} = \frac{2a^3 k^v_{\xi}}{D_{11}} \), \( k^{r*}_{\xi} = \frac{2a k^r_{\xi}}{D_{11}} \), \( S_{\alpha_1}=\sin\alpha_1  \), \( C_{\alpha_1}=\cos\alpha_1 \), \( Sh_{\alpha_1}=\sinh\alpha_1 \), \( Ch_{\alpha_1}=\cosh\alpha_1  \), \(S_{\beta_1}= \sin\beta_1 \), \( C_{\beta_1}=\cos\beta_1 \), \( Sh_{\beta_1}=\sinh\beta_1  \), and \(  Ch_{\beta_1}=\cosh\beta_1 \), we have:
+Substituting \Cref{eq:phi_solution1} into \Cref{eq:boundaryx}, and denoting $ k^{v*}_{\xi} = \frac{2a^3 k^v_{\xi}}{D_{11}} $, $ k^{r*}_{\xi} = \frac{2a k^r_{\xi}}{D_{11}} $, $ S_{\alpha_1}=\sin\alpha_1 $, $ C_{\alpha_1}=\cos\alpha_1 $, $ Sh_{\alpha_1}=\sinh\alpha_1 $, $ Ch_{\alpha_1}=\cosh\alpha_1 $, $S_{\beta_1}= \sin\beta_1 $, $C_{\beta_1}=\cos\beta_1$, $Sh_{\beta_1}=\sinh\beta_1 $, and $  Ch_{\beta_1}=\cosh\beta_1 $, we have:
 %
 \begin{equation}\label{eq:ABx}
 	\begin{split}
@@ -466,28 +466,28 @@ where the dynamic stiffness matrix, denoted as $\mathbf{K}_x = \mathbf{R}_x\math
 This matrix can be used to compute the natural frequencies of the system instead of solving the eigenvalue equation, 
 and the method for the computation will be given in \Cref{sec:WWA}.
 
-\subsection{Dynamic stiffness matrix corresponding to \(\omega_y\)}\label{sec:DSMy}
-In this section, the mode shape \(\phi(\xi)\) derived in \(\Cref{sec:DSMx}\) is utilized to obtain the dynamic stiffness matrix in the \(y\)-direction.  
-The vertical translational and rotational springs at \(\eta = -1\) are denoted as \(k^v_{\eta = -1}\) and \(k^r_{\eta = -1}\), respectively, while those at \(\eta = 1\) are represented by \(k^v_{\eta = 1}\) and \(k^r_{\eta = 1}\).
+\subsection{Dynamic stiffness matrix corresponding to $\omega_y$}\label{sec:DSMy}
+In this section, the mode shape $\phi(\xi)$ derived in $\Cref{sec:DSMx}$ is utilized to obtain the dynamic stiffness matrix in the $y$-direction.  
+The vertical translational and rotational springs at $\eta = -1$ are denoted as $k^v_{\eta = -1}$ and $k^r_{\eta = -1}$, respectively, while those at $\eta = 1$ are represented by $k^v_{\eta = 1}$ and $k^r_{\eta = 1}$.
 
-The magnitude of total potential energy along the edges in the \( y \)-direction is given by:  
+The magnitude of total potential energy along the edges in the $y$-direction is given by:  
 %
 \begin{equation}\label{eq:poten_energy_edgey2}  
 	\begin{split}  
 		U^{III}_{mag} &= ab \int \left[ \frac{k^r_{\eta=-1}}{a^3} \left( \frac{\partial w}{\partial \eta} \right)^2 + \frac{k^v_{\eta=-1}}{a} w^2 \right]_{\eta=-1} \id \xi \\  
-		&\quad + ab \int \left[ \frac{k^r_{\eta=1}}{a^3} \left( \frac{\partial w}{\partial \eta} \right)^2 + \frac{k^v_{\eta=1}}{a} w^2 \right]_{\eta=1} \id \xi.  
+		&\qquad + ab \int \left[ \frac{k^r_{\eta=1}}{a^3} \left( \frac{\partial w}{\partial \eta} \right)^2 + \frac{k^v_{\eta=1}}{a} w^2 \right]_{\eta=1} \id \xi.  
 	\end{split}  
 \end{equation} 
 % 
-The magnitude of potential energy of the plate in the \(y\)-direction can be obtained from
+The magnitude of potential energy of the plate in the $y$-direction can be obtained from
 \Cref{eq:poten_energy_mag,eq:poten_energy_edgey2} as:
 %
 \begin{equation}\label{eq:poten_energy_toly}
 	\begin{split}
 		U_{mag}&=U^{I}_{mag}+U^{III}_{mag}\\
 		&=\frac{ab}{2} \iint \left[ \frac{D_{11}}{a^4} \left( \frac{\partial^2 w}{\partial \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2} \frac{\partial^2 w}{\partial \xi^2} \frac{\partial^2 w}{\partial \eta^2} + \frac{D_{22}}{b^4} \left( \frac{\partial^2 w}{\partial \eta^2} \right)^2 \right. \\
-		&\quad \left.  + \frac{4 D_{66}}{a^2 b^2}\left( \frac{\partial^2 w}{\partial \xi \partial \eta} \right)^2 \right] \, \id\xi \, \id\eta+ab \int \left[ \frac{k^r_{\eta=1}}{b^3} \left( \frac{\partial w}{\partial \eta} \right)^2 + \frac{k^v_{\eta=1}}{b} \left( w \right)^2 \right]_{\eta=1} \id\xi\\
-		&\quad+ab \int \left[ \frac{k^r_{\eta=-1}}{b^3} \left( \frac{\partial w}{\partial \eta} \right)^2 + \frac{k^v_{\eta=-1}}{b} \left( w \right)^2 \right]_{\eta=-1} \id\xi.
+		&\qquad \left.  + \frac{4 D_{66}}{a^2 b^2}\left( \frac{\partial^2 w}{\partial \xi \partial \eta} \right)^2 \right] \, \id\xi \, \id\eta+ab \int \left[ \frac{k^r_{\eta=1}}{b^3} \left( \frac{\partial w}{\partial \eta} \right)^2 + \frac{k^v_{\eta=1}}{b} \left( w \right)^2 \right]_{\eta=1} \id\xi\\
+		&\qquad+ab \int \left[ \frac{k^r_{\eta=-1}}{b^3} \left( \frac{\partial w}{\partial \eta} \right)^2 + \frac{k^v_{\eta=-1}}{b} \left( w \right)^2 \right]_{\eta=-1} \id\xi.
 	\end{split}
 \end{equation}
 %
@@ -499,9 +499,9 @@ By substituting \Cref{eq:displace_func} into \Cref{eq:poten_energy_toly}, we obt
 		&= \frac{ab}{2} \int_{-1}^{1} \left[ \frac{D_{11}}{a^4} J_4 \psi^2 
 		+ \frac{2D_{12}}{a^2b^2} J_2 \frac{\id^2\psi }{\id \eta^2} \psi 
 		+ \frac{D_{22}}{b^4} J_1 \left(\frac{\id^2\psi }{\id \eta^2} \right)^2 \right. \\
-		&\quad \left. + \frac{4D_{66}}{a^2b^2} J_3 \left(\frac{\id \psi }{\id \eta} \right)^2 \right] \, \id\eta  + abJ_1 \left[ \frac{k^r_{\eta=1}}{b^3} \left( \frac{\id \psi}{\id \eta} \right)^2
+		&\qquad \left. + \frac{4D_{66}}{a^2b^2} J_3 \left(\frac{\id \psi }{\id \eta} \right)^2 \right] \, \id\eta  + abJ_1 \left[ \frac{k^r_{\eta=1}}{b^3} \left( \frac{\id \psi}{\id \eta} \right)^2
 		+ \frac{k^v_{\eta=1}}{b}  \left(\psi\right)^2 \right]_{\eta=1} \\
-		&\quad + abJ_1 \left[ \frac{k^r_{\eta=-1}}{b^3} \left( \frac{\id \psi}{\id \eta} \right)^2
+		&\qquad + abJ_1 \left[ \frac{k^r_{\eta=-1}}{b^3} \left( \frac{\id \psi}{\id \eta} \right)^2
 		+ \frac{k^v_{\eta=-1}}{b} \left(\psi\right)^2 \right]_{\eta=-1},
 	\end{split}
 \end{equation}
@@ -517,7 +517,7 @@ where the integral parameters are defined as:
 	\end{split}  
 \end{equation}  
 %
-The coefficient \( T_0 \) of the kinetic energy from \Cref{eq:kine_energy_mag} for the plate can be expressed as:
+The coefficient $T_0$ of the kinetic energy from \Cref{eq:kine_energy_mag} for the plate can be expressed as:
 %
 \begin{equation}\label{eq:kine_energyy}
 	\begin{split}
@@ -533,32 +533,32 @@ Take the Rayleigh principle in the form:
 	\end{split}
 \end{equation}
 %
-By substituting \Cref{eq:poten_energy_toly2,eq:kine_energyy} into \Cref{eq:Rayleighy}, and relieving \( \delta \psi \) and \( \delta\frac{\id \psi}{\id \eta} \) in \Cref{eq:Rayleighy} by variation calculus, yields:
+By substituting \Cref{eq:poten_energy_toly2,eq:kine_energyy} into \Cref{eq:Rayleighy}, and relieving $ \delta \psi $ and $\delta\frac{\id \psi}{\id \eta}$ in \Cref{eq:Rayleighy} by variation calculus, yields:
 %
 \begin{equation}\label{eq:Rayleighy2}
 	\begin{split}
 		0 &= \int_{-1}^{1} \left[ \frac{D_{22}}{b^4} J_1 \frac{d^4 \psi}{\id \eta^4} 
 		+ \left( \frac{2D_{12}}{a^2b^2} J_2 - \frac{4D_{66}}{a^2b^2} J_3 \right) \frac{\id^2 \psi}{\id \eta^2} \right. \\
-		&\quad \left. + \left( \frac{D_{11}}{a^4} J_4 - \omega_y^2 \rho h J_1 \right) \psi \right] \delta \psi \, \id\eta \\
-		&\quad + \frac{2k^v_{\eta=-1}}{b} J_1 (\psi \delta \psi)_{\eta=-1} 
+		&\qquad \left. + \left( \frac{D_{11}}{a^4} J_4 - \omega_y^2 \rho h J_1 \right) \psi \right] \delta \psi \, \id\eta \\
+		&\qquad + \frac{2k^v_{\eta=-1}}{b} J_1 (\psi \delta \psi)_{\eta=-1} 
 		+ \frac{2k^v_{\eta=1}}{b} J_1 (\psi \delta \psi)_{\eta=1} \\
-		&\quad + \left[ \left( \frac{4D_{66}}{a^2b^2} J_3 - \frac{D_{12}}{a^2b^2} J_2 \right) \frac{\id \psi}{\id \eta} 
+		&\qquad + \left[ \left( \frac{4D_{66}}{a^2b^2} J_3 - \frac{D_{12}}{a^2b^2} J_2 \right) \frac{\id \psi}{\id \eta} 
 		- \frac{D_{22}}{b^4} J_1 \frac{\id^3 \psi}{\id \eta^3} \right] \delta \psi \Big|^{\eta=1}_{\eta=-1} \\
-		&\quad + \left( \frac{D_{12}}{a^2b^2} J_2 \psi + \frac{D_{22}}{b^4} J_1 \frac{\id^2 \psi}{\id \eta^2} \right) 
+		&\qquad + \left( \frac{D_{12}}{a^2b^2} J_2 \psi + \frac{D_{22}}{b^4} J_1 \frac{\id^2 \psi}{\id \eta^2} \right) 
 		\delta\frac{\id  \psi}{\id \eta} \Big|^{\eta=1}_{\eta=-1} \\
-		&\quad + \frac{2k^r_{\eta=-1}}{b^3} J_1 \left( \frac{\id \psi}{\id \eta} \delta\frac{\id \psi}{\id \eta} \right)_{\eta=-1} 
+		&\qquad + \frac{2k^r_{\eta=-1}}{b^3} J_1 \left( \frac{\id \psi}{\id \eta} \delta\frac{\id \psi}{\id \eta} \right)_{\eta=-1} 
 		+ \frac{2k^r_{\eta=1}}{b^3} J_1 \left( \frac{\id \psi}{\id \eta} \delta\frac{\id \psi}{\id \eta} \right)_{\eta=1}.
 	\end{split}
 \end{equation}
 %
-Thus, the governing differential equation in the \( y \)-direction can be obtained from the integration part in \Cref{eq:Rayleighy2}:
+Thus, the governing differential equation in the $y$-direction can be obtained from the integration part in \Cref{eq:Rayleighy2}:
 %
 \begin{equation}\label{eq:ODEy}
 		\frac{\id^4 \psi}{\id \eta^4} + \frac{2}{\alpha^2}\left(\frac{D_{12}J_2}{D_{22}J_1} - 2\frac{D_{66}J_3}{D_{22}J_1}\right)\frac{\id^2 \psi}{\id \eta^2} + \left( \frac{D_{11}J_4}{\alpha^4D_{22}J_1} - \frac{b^4D_{11}}{D_{22}} \Omega_y^4 \right) \psi = 0,
 \end{equation}
 %
-where \( \Omega_y = \sqrt[4]{{\omega_y^2 \rho h}/D_{11}} \).
-By substituting \( \psi(\eta) = B e^{\lambda \eta} \) into \Cref{eq:ODEy}, yields:
+where $\Omega_y = \sqrt[4]{{\omega_y^2 \rho h}/D_{11}}$.
+By substituting $\psi(\eta) = B e^{\lambda \eta}$ into \Cref{eq:ODEy}, yields:
 %
 \begin{equation}\label{eq:ODEy2}
 	\begin{split}
@@ -566,7 +566,7 @@ By substituting \( \psi(\eta) = B e^{\lambda \eta} \) into \Cref{eq:ODEy}, yield
 	\end{split}
 \end{equation}
 %
-The solution for \( \lambda \) can be expressed as:
+The solution for $\lambda$ can be expressed as:
 %
 \begin{equation}\label{eq:lambda}
 	\begin{split}
@@ -583,29 +583,29 @@ where,
 	\end{align}
 \end{subequations}
 %
-The boundary conditions along the edges in the \( y \)-direction can be obtained from the remaining \( \delta \psi \) and \( \delta \frac{\id \psi}{\id \eta} \) parts in \Cref{eq:Rayleighy2}. 
-The shear force equilibrium can be obtained from the \( \delta \psi \) part:
+The boundary conditions along the edges in the $y$-direction can be obtained from the remaining $\delta \psi$ and $\delta \frac{\id \psi}{\id \eta}$ parts in \Cref{eq:Rayleighy2}. 
+The shear force equilibrium can be obtained from the $\delta \psi$ part:
 %
 \begin{equation}\label{eq:inertial_forcey}
 	\begin{split}
 		& \left[ \left( \frac{4D_{66}}{a^2b^2} J_3 - \frac{D_{12}}{a^2b^2} J_2 \right) \frac{\id \psi}{\id \eta} 
 		- \frac{D_{22}}{b^4} J_1 \frac{\id^3 \psi}{\id \eta^3} \right] \Big|^{\eta=1}_{\eta=-1} \\
-		&\quad + \frac{2k^v_{\eta=-1}}{b} J_1 (\psi )_{\eta=-1} + \frac{2k^v_{\eta=1}}{b} J_1 (\psi )_{\eta=1} = 0,
+		&\qquad + \frac{2k^v_{\eta=-1}}{b} J_1 (\psi )_{\eta=-1} + \frac{2k^v_{\eta=1}}{b} J_1 (\psi )_{\eta=1} = 0,
 	\end{split}
 \end{equation}
 %
-and from the \( \delta \frac{\id \psi}{\id \eta} \) part, the bending moment equilibrium:
+and from the $\delta \frac{\id \psi}{\id \eta}$ part, the bending moment equilibrium:
 %
 \begin{equation}\label{eq:inertial_forcey2}	
  \begin{split}
  	\left( \frac{D_{12}}{a^2b^2} J_2 \psi + \frac{D_{22}}{b^4} J_1 \frac{\id^2 \psi}{\id \eta^2} \right) 
  	\Big|^{\eta=1}_{\eta=-1} 
  	&+ \frac{2k^r_{\eta=-1}}{b^3} J_1 \left( \frac{\id \psi}{\id \eta} \right)_{\eta=-1} \\
- 	&+ \frac{2k^r_{\eta=1}}{b^3} J_1 \left( \frac{\id \psi}{\id \eta} \right)_{\eta=1}=0.
+ 	&\qquad+ \frac{2k^r_{\eta=1}}{b^3} J_1 \left( \frac{\id \psi}{\id \eta} \right)_{\eta=1}=0.
  \end{split}
 \end{equation}
 %
-Thus, we can obtain the shear force and bending moment equilibrium along the edges \( \eta = -1 \) and \( \eta = 1 \) from \Cref{eq:inertial_forcey,eq:inertial_forcey2}, respectively, as:
+Thus, we can obtain the shear force and bending moment equilibrium along the edges $\eta = -1$ and $\eta = 1$ from \Cref{eq:inertial_forcey,eq:inertial_forcey2}, respectively, as:
 %
 \begin{subequations}\label{eq:boundaryy}
 	\begin{align}
@@ -619,16 +619,16 @@ Thus, we can obtain the shear force and bending moment equilibrium along the edg
 \end{subequations}
 %
 Substituting \Cref{eq:phi_solution2} into \Cref{eq:boundaryy} and denoting
-\( k^{v*}_{\eta} = \frac{2b^3 k^v_{\eta}}{D_{22}} \), 
-\( k^{r*}_{\eta} = \frac{2b k^r_{\eta}}{D_{22}} \), 
-\( S_{\alpha_2}=\sin\alpha_2  \), 
-\( C_{\alpha_2}=\cos\alpha_2  \), 
-\( Sh_{\alpha_2}=\sinh\alpha_2  \), 
-\( Ch_{\alpha_2}=\cosh\alpha_2 \), 
-\( S_{\beta_2}=\sin\beta_2  \), 
-\( C_{\beta_2}=\cos\beta_2  \), 
-\( Sh_{\beta_2}=\sinh\beta_2 \), and 
-\(Ch_{\beta_2}= \cosh\beta_2 \), 
+$k^{v*}_{\eta} = \frac{2b^3 k^v_{\eta}}{D_{22}} $, 
+$ k^{r*}_{\eta} = \frac{2b k^r_{\eta}}{D_{22}} $, 
+$S_{\alpha_2}=\sin\alpha_2  $, 
+$ C_{\alpha_2}=\cos\alpha_2  $, 
+$ Sh_{\alpha_2}=\sinh\alpha_2  $, 
+$ Ch_{\alpha_2}=\cosh\alpha_2 $, 
+$ S_{\beta_2}=\sin\beta_2 $, 
+$ C_{\beta_2}=\cos\beta_2 $, 
+$ Sh_{\beta_2}=\sinh\beta_2$, and 
+$Ch_{\beta_2}= \cosh\beta_2$, 
 We obtain:
 %
 \begin{equation}\label{eq:ABy}
@@ -693,49 +693,52 @@ or,
 	\mathbf{\delta}_y= \mathbf{Q}_y\mathbf{B}.
 \end{equation}
 %
-Note that the eigenvector \(\mathbf{B}\) can be expressed by multiplying the inverse matrix \(\mathbf{Q}_y^{-1}\) on the left-hand side of \Cref{eq:UBy1}, and then substituting \(\mathbf{B}\) into \Cref{eq:ABy1}, we obtain:
+Note that the eigenvector $\mathbf{B}$ can be expressed by multiplying the inverse matrix $\mathbf{Q}_y^{-1}$ on the left-hand side of \Cref{eq:UBy1}, and then substituting $\mathbf{B}$ into \Cref{eq:ABy1}, we obtain:
 %
 \begin{equation}\label{eq:DSM_eqy}
 	\mathbf{R}_y\mathbf{B}=\mathbf{R}_y \mathbf{Q}_x^{-1} 
 	\mathbf{\delta}_y = \mathbf{0},
 \end{equation}
 %
-where the dynamic stiffness matrix, denoted as \(\mathbf{K}_y = \mathbf{R}_y \mathbf{Q}_y^{-1}\), can be obtained from \Cref{eq:DSM_eqy}.
+where the dynamic stiffness matrix, denoted as $\mathbf{K}_y = \mathbf{R}_y \mathbf{Q}_y^{-1}$, can be obtained from \Cref{eq:DSM_eqy}.
 
 \section{Frequency and mode shape computation}\label{sec:WWA}
 \subsection{Wittrick–Williams algorithm and enhancement}\label{sec:WWA2}
 The Wittrick–Williams (W-W) algorithm \cite{wittrick1971general} is an effective method for determining the natural frequencies from the dynamic stiffness matrix with high reliability. 
-Instead of directly solving the equations, the algorithm computes the total number \(J\) of natural frequencies below a given frequency \(\omega^*\), which is represented as:
+Instead of directly solving the equations, the algorithm computes the total number $J$ of natural frequencies below a given frequency $\omega^*$, which is represented as:
 \begin{equation}\label{eq:WWalgorithm}
 	J(\omega^*) = J_0(\omega^*) + s\{\mathbf{K}^{\Delta}(\omega^*)\} = J_0(\omega^*) + J_k(\omega^*),
 \end{equation}
-where \(J_0\) represents the number of natural frequencies for the system with both ends fully clamped, \(\mathbf{K}^{\Delta}\) is the upper triangular matrix obtained from the dynamic stiffness matrix \(\mathbf{K}\) after applying Gaussian elimination, and \(J_k(\omega^*)\) denotes the number of negative elements in the leading diagonal of \(\mathbf{K}^{\Delta}\).
+where $J_0$ represents the number of natural frequencies of the structure with all ends fully clamped, $\mathbf{K}^{\Delta}$ is the upper triangular matrix obtained from the dynamic stiffness matrix $\mathbf{K}$ after applying Gaussian elimination, and $J_k(\omega^*)$ denotes the number of negative elements in the leading diagonal of $\mathbf{K}^{\Delta}$.
 
-It should be noted that the \( J_0 \) count is a crucial aspect when applying the W-W algorithm. Many previous studies use a sufficiently fine mesh or enough terms in series expansions to capture all fully clamped natural frequencies, ensuring computational accuracy \cite{banerjee2015dynamic}. However, this approach can make the application process cumbersome. 
-To address this issue, the fully clamped problem can be replaced with a simply supported problem, where the Navier solution for the simply supported plate is used to count \( J_0 \) \citep{liu2015exact}. 
+It should be noted that the $J_0$ count is a crucial aspect when applying the W-W algorithm. Many previous studies use a sufficiently fine mesh or enough terms in series expansions to capture all fully clamped natural frequencies, ensuring computational accuracy \cite{banerjee2015dynamic}. However, this approach can make the application process cumbersome. 
+To address this issue, the fully clamped problem can be replaced with a simply supported problem, where the Navier solution for the simply supported plate is used to count $J_0$ \citep{liu2015exact}. 
 Nevertheless, since analytical solutions in DSM methods involve an infinite series of Fourier terms, a sufficient number of truncation terms is required to ensure accuracy and convergence.   
 
-However, the idea of solving the simply supported problem proposes an effective and systematic approach to indirectly determine the \( J_0 \) count for a fully clamped structure, where the boundary conditions are modeled as pinned supports rather than clamped ones \cite{han2018improved}:
+
+In fact, $ J_0 $ can be indirectly determined by evaluating the number of natural frequencies $ J $ of the structure under specific boundary conditions, which are generally different from the original boundary conditions \cite{han2018improved}:
 %
 \begin{equation}\label{eq:J_o_pin}
 	J_0(p_1,\omega^*) = J(\bar{p}_1,\omega^*) - J_k(\bar{p}_1,\omega^*),
 \end{equation}
 %
-where \( p_1 \) and \( \bar{p}_1 \) represent clamped and pinned supports, respectively.
+where $ p_1 $ denotes the fully clamped supports, and $ \bar{p}_1 $ denotes specific supports, which are typically simply supported, guided, or a combination of the two.
+For these specific boundary conditions, the eigenvalue equations of SOV type solution take the form of a single harmonic function.
 By substituting \Cref{eq:J_o_pin} into \Cref{eq:WWalgorithm} we get the algorithm as:  
 %
 \begin{equation}\label{eq:new_WWalgorithm}
 	J(p,\omega^*) = J(\bar{p}_1,\omega^*) - J_k(\bar{p}_1,\omega^*) + J_k(p,\omega^*)
 \end{equation} 
 %
-where \( p \) represents the original boundary conditions of the structure.
-Therefore, the challenge of determining \( J_0(p_1, \omega^*) \) can be transformed into the problem of solving \( J(\bar{p}_1, \omega^*) \) instead. The eigenvalue equation corresponding to the natural frequency parameter \( \Omega_x \) can be obtained from the determinant of the coefficient matrix \( \mathbf{R}_x \) in \Cref{eq:ABx}, which is given by \citep{xing2020extended}:
+where $p$ represents the original boundary conditions of the structure.
+Therefore, the challenge of determining $J_0(p_1, \omega^*)$ can be transformed into the problem of solving $ J(\bar{p}_1, \omega^*)$ instead. 
+By considering fully simply supported boundary conditions, the eigenvalue equation corresponding to the natural frequency parameter $ \Omega_x $ can be obtained from the determinant of the coefficient matrix $ \mathbf{R}_x $ in \Cref{eq:ABx}, as given by:
 %
 \begin{equation}\label{eq:SSx} 
 	\sin 2\alpha_1 = 0.
 \end{equation}
 %
-With the help of \Cref{eq:alphax1,eq:SSx}, the closed-form solution of the \(n_x\)th simply supported frequency \(\Omega_{x,n_x}\) for the given \(n_y\)-order \(\psi_{n_y}(\eta)\) can be expressed as:
+With the help of \Cref{eq:alphax1,eq:SSx}, the closed-form solution of the $n_x$-th simply supported frequency $\Omega_{x,n_x}$ for the given $n_y$-order $\psi_{n_y}(\eta)$ can be expressed as:
 %
 \begin{equation}\label{eq:J_simpx}
 	\Omega_{x,n_x} =
@@ -748,8 +751,8 @@ With the help of \Cref{eq:alphax1,eq:SSx}, the closed-form solution of the \(n_x
 	}
 \end{equation}
 %
-For \(\Omega_{x,n_x} \leq \Omega_x^* < \Omega_{x,n_{x+1}}\), \(J(\bar{p}_1, \Omega_x^*) = n_x\).
-Similarly, the closed-form solution of the \(n_y\)-th simply supported frequency \(\Omega_{y,n_y}\) for the given \(n_x\)-order \(\phi_{n_x}(\xi)\) can be expressed as:
+For $\Omega_{x,n_x} \leq \Omega_x^* < \Omega_{x,n_{x+1}}$, $J(\bar{p}_1, \Omega_x^*) = n_x$.
+Similarly, the closed-form solution of the $n_y$-th simply supported frequency $\Omega_{y,n_y}$ for the given $n_x$-order $\phi_{n_x}(\xi)$ can be expressed as:
 %
 \begin{equation}\label{eq:J_simpy}
 	\Omega_{y,n_y}= 
@@ -761,15 +764,15 @@ Similarly, the closed-form solution of the \(n_y\)-th simply supported frequency
 	}
 \end{equation}
 %
-For \(\Omega_{y,n_y} \leq \Omega_y^* < \Omega_{y,n_{y+1}}\), \(J(\bar{p}_1, \Omega_y^*) = n_y\).
+For $\Omega_{y,n_y} \leq \Omega_y^* < \Omega_{y,n_{y+1}}$, $J(\bar{p}_1, \Omega_y^*) = n_y$.
 According to the relationships 
 $\Omega_x = \sqrt[4]{{\omega_x^2 \rho h}/{D_{11}}}$ and\ $\Omega_y = \sqrt[4]{{\omega_y^2 \rho h}/{D_{11}}}$, 
-the values of \(J(\bar{p}_1, \omega_x^*)\) and \(J(\bar{p}_1, \omega_y^*)\) can be derived from \(J(\bar{p}_1, \Omega_x^*)\) and \(J(\bar{p}_1, \Omega_y^*)\), respectively. Therefore, this refined W-W algorithm can be applied to estimate the lower and upper bounds of the frequency range, denoted as \(\omega_l\) and \(\omega_u\), yielding an approximation for the frequency \(\omega_a \in (\omega_l, \omega_u)\).
+the values of $J(\bar{p}_1, \omega_x^*)$ and $J(\bar{p}_1, \omega_y^*)$ can be derived from $J(\bar{p}_1, \Omega_x^*)$ and $J(\bar{p}_1, \Omega_y^*)$, respectively. Therefore, this refined W-W algorithm can be applied to estimate the lower and upper bounds of the frequency range, denoted as $\omega_l$ and $\omega_u$, yielding an approximation for the frequency $\omega_a \in (\omega_l, \omega_u)$.
 \subsection{Mode shape computation}
-The mode shape coefficients \( A_1 \) to \( A_4 \) and \( B_1 \) to \( B_4 \) in the eigenvectors \( \mathbf{A} \) and \( \mathbf{B} \) for all classic boundary conditions are provided in \cite{xing2020extended}. 
+The mode shape coefficients $ A_1 $ to $ A_4 $ and $ B_1 $ to $ B_4$ in the eigenvectors $\mathbf{A}$ and $\mathbf{B}$ for all classic boundary conditions are provided in \cite{xing2020extended}. 
 Alternatively, these coefficients can also be obtained through a simple numerical method, which this work presents as an approach.
-Here, we illustrate solving the eigenvector \( \mathbf{A} \) as an example.
-By assuming the exact natural frequency as \( \omega_k \), we can expand the coefficient matrix \( \mathbf{R}_{x} \) in \Cref{eq:ABx} using a first-order Taylor series about \( \omega_a \):
+Here, we illustrate solving the eigenvector $\mathbf{A}$ as an example.
+By assuming the exact natural frequency as $\omega_k$, we can expand the coefficient matrix $ \mathbf{R}_{x} $ in \Cref{eq:ABx} using a first-order Taylor series about $\omega_a$:
 %
 \begin{equation}\label{eq:Taylor}
 	\mathbf{R}_{x,k}(\omega_k)\mathbf{A}_k = \mathbf{R}_{x,a}\mathbf{A}_k + (\omega_k - \omega_a)\mathbf{R}'_{x,a}\mathbf{A}_k + O\left((\omega_k - \omega_a)^2\right) = 0.
@@ -787,7 +790,7 @@ This eigenvalue problem can be solved using the inverse iteration procedure \cit
 	\bar{\mathbf{A}}^{(i+1)} = \mathbf{R}_{x,a}^{-1} \mathbf{R}^{'}_{x,a} \mathbf{A}^{(i)},	
 \end{equation}
 %
-where the initial guess for \( \mathbf{A}^{(0)} \) is a column vector consisting of four randomly generated elements, each of which falls within the range (0,1). The updated eigenvalue for the next step can be obtained as:
+where the initial guess for $\mathbf{A}^{(0)}$ is a column vector consisting of four randomly generated elements, each of which falls within the range (0,1). The updated eigenvalue for the next step can be obtained as:
 %
 \begin{equation}\label{eq:Newgeigenvalue}
 	\tau^{(i+1)} = \frac{1}{\bar{A}_j^{(i+1)}},
@@ -814,47 +817,48 @@ The procedure can be controlled by the error tolerance \( \epsilon \) or maximum
 	\end{align}
 \end{subequations}
 %
-Note that the mode shape coefficients \( A_1 \) to \( A_4 \) obtained from \(\mathbf{A}^{(i+1)}\) are applied for the elastically restrained boundary conditions.
+Note that the mode shape coefficients $A_1$ to $A_4$ obtained from $\mathbf{A}^{(i+1)}$ are applied for the elastically restrained boundary conditions.
 
 \subsection{Application procedure}\label{sec:Application procedure}
 The procedure of the proposed method is as follows:   
 \begin{itemize}[]
-	\item \textbf{Step 1} Assume initial integral parameters \(I^{(0)}_1, I^{(0)}_2, I^{(0)}_3\), and \(I^{(0)}_4\) in the \(y\)-direction. Using the given boundary conditions at \(\xi = -1\) and \(\xi = 1\), determine \(\mathbf{K}^{(0)}_x\) from \Cref{eq:DSM_eqx}. 
-	Then, apply the computational algorithms in \Cref{sec:WWA2} to compute the lower and upper bounds of the \(n_x\)-th non-dimensional frequency parameter, \(2a\Omega^{(0)}_{l,x,n_x}\) and \(2a\Omega^{(0)}_{u,x,n_x}\), and take the average \(2a\Omega^{(0)}_{x,n_x} = (2a\Omega^{(0)}_{l,x,n_x} + 2a\Omega^{(0)}_{u,x,n_x})/2\) along with its corresponding mode shape \(\phi^{(0)}_{n_x}\), where \(n_x = 1, 2, 3, \ldots\).
+	\item \textbf{Step 1} Assume initial integral parameters $I^{(0)}_1, I^{(0)}_2, I^{(0)}_3$, and $I^{(0)}_4$ in the $y$-direction. Using the given boundary conditions at $\xi = -1$ and $\xi = 1$, determine $\mathbf{K}^{(0)}_x$ from \Cref{eq:DSM_eqx}. 
+	Then, apply the computational algorithms in \Cref{sec:WWA2} to compute the lower and upper bounds of the $n_x$-th non-dimensional frequency parameter, $2a\Omega^{(0)}_{l,x,n_x}$ and $2a\Omega^{(0)}_{u,x,n_x}$, and take the average $2a\Omega^{(0)}_{x,n_x} = (2a\Omega^{(0)}_{l,x,n_x} + 2a\Omega^{(0)}_{u,x,n_x})/2$ along with its corresponding mode shape $\phi^{(0)}_{n_x}$, where $n_x = 1, 2, 3, \ldots$.
 	
-	\item \textbf{Step 2} Use \(\phi^{(0)}_{n_x}\) as the prescribed mode to determine \(\mathbf{K}^{(1)}_y\) in \Cref{eq:DSM_eqy}, considering the boundary conditions at \(\eta = -1\) and \(\eta = 1\). 
-	Apply the computational algorithms to obtain the \(n_y\)-th frequency parameter \(2a\Omega^{(1)}_{y,n_y}\) and its corresponding mode shape \(\psi^{(1)}_{n_y}\), where \(n_y = 1, 2, 3, \ldots\). This completes the first iteration cycle.  
+	\item \textbf{Step 2} Use $\phi^{(0)}_{n_x}$ as the prescribed mode to determine $\mathbf{K}^{(1)}_y$ in \Cref{eq:DSM_eqy}, considering the boundary conditions at $\eta = -1$ and $\eta = 1$. 
+	Apply the computational algorithms to obtain the $n_y$-th frequency parameter $2a\Omega^{(1)}_{y,n_y}$ and its corresponding mode shape $\psi^{(1)}_{n_y}$, where $n_y = 1, 2, 3, \ldots$. This completes the first iteration cycle.  
 	
-	\item \textbf{Step 3} Use \(\psi^{(1)}_{n_y}\) as the prescribed \(n_y\)-th mode shape in the \(y\)-direction to compute \(\mathbf{K}^{(1)}_x\) from \Cref{eq:DSM_eqx}, then determine the \(n_x\)-th frequency parameter \(2a\Omega^{(1)}_{x,n_x}\) and its corresponding mode shape \(\phi^{(1)}_{n_x}\).  
+	\item \textbf{Step 3} Use $\psi^{(1)}_{n_y}$ as the prescribed $n_y$-th mode shape in the $y$-direction to compute $\mathbf{K}^{(1)}_x$ from \Cref{eq:DSM_eqx}, then determine the $n_x$-th frequency parameter $2a\Omega^{(1)}_{x,n_x}$ and its corresponding mode shape $\phi^{(1)}_{n_x}$.  
 	
-	\item \textbf{Step 4} Use \(\phi^{(1)}_{n_x}\) as the prescribed mode in the \(x\)-direction to compute the \(n_y\)-th frequency parameter \(2a\Omega^{(2)}_{y,n_y}\) and its corresponding mode shape \(\psi^{(2)}_{n_y}\), completing the second iteration cycle.  
+	\item \textbf{Step 4} Use $\phi^{(1)}_{n_x}$ as the prescribed mode in the $x$-direction to compute the $n_y$-th frequency parameter $2a\Omega^{(2)}_{y,n_y}$ and its corresponding mode shape $\psi^{(2)}_{n_y}$, completing the second iteration cycle.  
 	
-	\item \textbf{Step 5} Stop the iteration if \(\lvert 2a\Omega^{(i)}_{x,n_x} - 2a\Omega^{(i+1)}_{x,n_x} \rvert \leq \Delta 2a\Omega\) or \(\lvert 2a\Omega^{(i)}_{y,n_y} - 2a\Omega^{(i+1)}_{y,n_y} \rvert \leq \Delta 2a\Omega\), where \(\Delta 2a\Omega = 2a\Omega_u - 2a\Omega_l\). Here, \(2a\Omega_l\) and \(2a\Omega_u\) are the lower and upper bounds of the frequency parameter range, within which the actual frequency parameter \(2a\Omega\) lies, i.e., \(2a\Omega \in (2a\Omega_l, 2a\Omega_u)\). The quantity \(\Delta 2a\Omega\) represents the frequency parameter interval used in the W-W algorithm.
+	\item \textbf{Step 5} Stop the iteration if $\lvert 2a\Omega^{(i)}_{x,n_x} - 2a\Omega^{(i+1)}_{x,n_x} \rvert \leq \Delta 2a\Omega$ or $\lvert 2a\Omega^{(i)}_{y,n_y} - 2a\Omega^{(i+1)}_{y,n_y} \rvert \leq \Delta 2a\Omega$, where $\Delta 2a\Omega = 2a\Omega_u - 2a\Omega_l$. Here, $2a\Omega_l$ and $2a\Omega_u$ are the lower and upper bounds of the frequency parameter range, within which the actual frequency parameter $2a\Omega$ lies, i.e., $2a\Omega \in (2a\Omega_l, 2a\Omega_u)$. The quantity $\Delta 2a\Omega$ represents the frequency parameter interval used in the W-W algorithm.
 	
-	\item \textbf{Step 6} Finally, construct the \((n_x, n_y)\)-th mode shape as \(w(\xi, \eta) = \phi_{n_x}(\xi) \psi_{n_y}(\eta)\) using \Cref{eq:displace_func}.  
+	\item \textbf{Step 6} Finally, construct the $(n_x, n_y)$-th mode shape as $w(\xi, \eta) = \phi_{n_x}(\xi) \psi_{n_y}(\eta)$ using \Cref{eq:displace_func}.  
 \end{itemize}
+
 
 
 \FloatBarrier
 \section{Numerical Results}  
 This section presents the numerical validation of the proposed method for classic boundary conditions and rotationally restrained boundary conditions.  
-For all numerical calculations, the initial integral parameters are assumed as \(I^{(0)}_1=1\), \(I^{(0)}_2=1\), \(I^{(0)}_3=1\), and \(I^{(0)}_4=10\) in the \(y\)-direction, serving as the starting point of \textbf{Step 1} for any mode in all boundary conditions.  
-In this section, the interval between the upper and lower bounds of the non-dimensional frequency parameter, \(2a\Delta\Omega\), is set to 0.005, limiting the error range.  
-According to our numerical calculations, two iteration cycles are generally sufficient to meet the convergence requirement (i.e., \(\lvert 2a\Omega^{(i)}_{x} - 2a\Omega^{(i+1)}_{x} \rvert \leq \Delta 2a\Omega\) or \(\lvert 2a\Omega^{(i)}_{y} - 2a\Omega^{(i+1)}_{y} \rvert \leq \Delta 2a\Omega\)) for most cases, with at most three cycles required when applying the iterative procedure in \Cref{sec:Application procedure}.
+For all numerical calculations, the initial integral parameters are assumed as $I^{(0)}_1=1$, $I^{(0)}_2=1$, $I^{(0)}_3=1$, and $I^{(0)}_4=10$ in the $y$-direction, serving as the starting point of \textbf{Step 1} for any mode in all boundary conditions.  
+In this section, the interval between the upper and lower bounds of the non-dimensional frequency parameter, $2a\Delta\Omega$, is set to 0.005, limiting the error range.  
+According to our numerical calculations, two iteration cycles are generally sufficient to meet the convergence requirement (i.e., $\lvert 2a\Omega^{(i)}_{x} - 2a\Omega^{(i+1)}_{x} \rvert \leq \Delta 2a\Omega$ or $\lvert 2a\Omega^{(i)}_{y} - 2a\Omega^{(i+1)}_{y} \rvert \leq \Delta 2a\Omega$) for most cases, with at most three cycles required when applying the iterative procedure in \Cref{sec:Application procedure}.
  
  
 
 \subsection{Classical boundary conditions}
 In this subsection, the proposed method is validated by comparison with the extended SOV method \cite{xing2020extended}.  
 The properties of the orthotropic plate, consistent with those in \cite{xing2020extended}, are as follows:  
-\(E_1 = 185 \nugpa\), \(E_2 = 10.5 \nugpa\), \(G_{12} = 7.3 \nugpa\), \(\rho = 1600 \urho\), and \(\nu_{12} = 0.28\).
+$E_1 = 185 \nugpa$, $E_2 = 10.5 \nugpa$, $G_{12} = 7.3 \nugpa$, $\rho = 1600 \urho$, and $\nu_{12} = 0.28$.
   
-The translational springs (\(k^v_\xi\)) and rotational springs (\(k^r_\xi\)) along all edges can be set to zero or infinity (represented as \(1 \times 10^{15} \ustif\) in the numerical calculations of this study) to obtain different classic boundary conditions.  
+The translational springs ($k^v_\xi$) and rotational springs ($k^r_\xi$) along all edges can be set to zero or infinity (represented as $1 \times 10^{15} \ustif$ in the numerical calculations of this study) to obtain different classic boundary conditions.  
 
 The results for SSSS, SCSF, GCGC, CCCC, SSCC, SCCC, GGCC, CCFF, CFCF, CFFF, and FFFF boundary conditions are presented in \Cref{tab:sov1,tab:sov2,tab:sov3}. 
 These results demonstrate high accuracy compared to the extended SOV method, with difference remaining smaller than the frequency parameter interval $2a\Delta\Omega=0.005$. 
-The frequency parameters in both directions are equal (\(2a\Omega_x - 2a\Omega_y = 0\)) in almost all cases, with a few exceptions where \(2a\Omega_x - 2a\Omega_y = 0.005\). 
-In fact, higher accuracy compared to the extended SOV method can be achieved if the frequency parameter interval \(2a\Delta\Omega\) is set smaller than 0.005. It should be noted that the accuracy improves only by reducing \(2a\Delta\Omega\), and no additional iterations are required according to our calculations.
+The frequency parameters in both directions are equal ($2a\Omega_x - 2a\Omega_y = 0$) in almost all cases, with a few exceptions where $2a\Omega_x - 2a\Omega_y = 0.005$. 
+In fact, higher accuracy compared to the extended SOV method can be achieved if the frequency parameter interval $2a\Delta\Omega$ is set smaller than 0.005. It should be noted that the accuracy improves only by reducing $2a\Delta\Omega$, and no additional iterations are required according to our calculations.
 \Cref{fig:FFFF} shows the first six nonzero mode shapes of a square orthotropic plate with FFFF boundary conditions, where the mode shape coefficients are calculated using the numerical method developed in this study. 
 Instead of selecting fixed expressions for the mode shape coefficients based on specific boundary conditions, our method is applicable to all boundary conditions.
 
@@ -1054,7 +1058,7 @@ Instead of selecting fixed expressions for the mode shape coefficients based on 
 	\label{tab:sov3}
 \end{table}
 \subsection{Rotationally restrained boundary conditions}
-In this subsection, rectangular orthotropic plates with rotationally restrained edges (\(k^v_\xi = k^v_\eta = \infty\)) are validated.  
+In this subsection, rectangular orthotropic plates with rotationally restrained edges ($k^v_\xi = k^v_\eta = \infty$) are validated.  
 The rotational stiffness coefficients are defined as: 
 % 
 \begin{subequations}\label{eq:rotation_coex}
@@ -1065,18 +1069,18 @@ The rotational stiffness coefficients are defined as:
 \end{subequations}
 
 
-The first example considers a square isotropic plate with all four edges rotationally restrained. The vertical translational springs along the four edges are numerically set as \( k^v_{\xi=-1} = k^v_{\xi=1} = k^v_{\eta=-1} = k^v_{\eta=1} = 1 \times 10^{12} \ustif \). The material properties are given as \( D_{11} = D_{22} = D_3 \) and \( v_{12} = v_{21} = 0.3 \).  
+The first example considers a square isotropic plate with all four edges rotationally restrained. The vertical translational springs along the four edges are numerically set as $ k^v_{\xi=-1} = k^v_{\xi=1} = k^v_{\eta=-1} = k^v_{\eta=1} = 1 \times 10^{12} \ustif $. The material properties are given as $ D_{11} = D_{22} = D_3 $ and $ v_{12} = v_{21} = 0.3 $.  
 
-\Cref{tab:rot1} presents the frequency parameter \( 2a\Omega \) for different rotational stiffness coefficients \( r_{\xi} = r_{\eta} \) with values \( 0.1, 1, 10, 100, \) and \( 1000 \).  
-Notably, when \( r_{\xi} = r_{\eta} = 0 \) and \( r_{\xi} = r_{\eta} = \infty \), the boundary conditions correspond to SSSS and CCCC, respectively.  
+\Cref{tab:rot1} presents the frequency parameter $2a\Omega $ for different rotational stiffness coefficients  $ r_{\xi} = r_{\eta} $ with values $ 0.1, 1, 10, 100, $ and $ 1000$.  
+Notably, when $ r_{\xi} = r_{\eta} = 0 $ and $r_{\xi} = r_{\eta} = \infty$, the boundary conditions correspond to SSSS and CCCC, respectively.  
 
-Interestingly, the results indicate that the frequencies \(\Omega_x\) and \(\Omega_y\) are not strictly equal for some mode shapes under rotationally restrained boundary conditions.  
-The actual frequency \(\Omega\) lies between \(\Omega_x\) and \(\Omega_y\), which may be attributed to the fact that \(\Omega_x\) and \(\Omega_y\) satisfy Rayleigh’s principle in \Cref{eq:Rayleigh}, representing the weak-form governing equations, but do not necessarily satisfy the strong-form governing equations in \Cref{eq:governing_EOM}.
+Interestingly, the results indicate that the frequencies $\Omega_x$ and $\Omega_y$ are not strictly equal for some mode shapes under rotationally restrained boundary conditions.  
+The actual frequency $\Omega$ lies between $\Omega_x$ and $\Omega_y$, which may be attributed to the fact that $\Omega_x$ and $\Omega_y$ satisfy Rayleigh’s principle in \Cref{eq:Rayleigh}, representing the weak-form governing equations, but do not necessarily satisfy the strong-form governing equations in \Cref{eq:governing_EOM}.
 For a physical problem with exact solutions, both \Cref{eq:Rayleigh,eq:governing_EOM} must be satisfied.  
 If this condition is not met, applying \Cref{eq:Rayleigh} still provides a viable approach for approximating the exact solution of the plate.  
-Thus, the exact frequency can be estimated as \(\Omega = (\Omega_x + \Omega_y)/2\).  
-As shown in \Cref{tab:rot1}, the maximum difference between \(\Omega\) and the solutions reported in \Citealp{zhang2019new} is less than \(1.3\%\).
-\Cref{fig:iso} illustrates the variation in mode shapes corresponding to the fundamental natural frequency as the rotational stiffness \(r_{\xi} = r_{\eta}\) increases from zero to \(\infty\), transitioning the boundary conditions from SSSS to CCCC.
+Thus, the exact frequency can be estimated as $\Omega = (\Omega_x + \Omega_y)/2$.  
+As shown in \Cref{tab:rot1}, the maximum difference between \(\Omega\) and the solutions reported in \Citealp{zhang2019new} is less than $1.3\%$.
+\Cref{fig:iso} illustrates the variation in mode shapes corresponding to the fundamental natural frequency as the rotational stiffness $r_{\xi} = r_{\eta}$ increases from zero to $\infty$, transitioning the boundary conditions from SSSS to CCCC.
 
 
 \begin{figure}
@@ -1129,13 +1133,13 @@ As shown in \Cref{tab:rot1}, the maximum difference between \(\Omega\) and the s
 		\label{fig:isoinf}
 	\end{subfigure}
 	\caption[]  
-	{\small The first mode shape of a square isotropic plate with all four edges rotationally restrained: (a) \(r_{\xi} = r_{\eta} = 0\); (b) \(r_{\xi} = r_{\eta} = 1\); (c) \(r_{\xi} = r_{\eta} = 10\); (d) \(r_{\xi} = r_{\eta} = 20\); (e) \(r_{\xi} = r_{\eta} = 100\); (f) \(r_{\xi} = r_{\eta} = \infty\).}  
-	\label{fig:iso}  
+	{\small The first mode shape of a square isotropic plate with all four edges rotationally restrained: (a) $r_{\xi} = r_{\eta} = 0$; (b) $r_{\xi} = r_{\eta} = 1$; (c) $r_{\xi} = r_{\eta} = 10$; (d) $r_{\xi} = r_{\eta} = 20$; (e) $r_{\xi} = r_{\eta} = 100$; (f) $r_{\xi} = r_{\eta} = \infty$.}  
+	\label{fig:iso} 
 \end{figure}
 
 \begin{table}[!htbp]
 	\centering
-	\caption{The first six frequency parameters, \(2a\Omega = 2a\sqrt[4]{\rho h \omega^2/D_{11}}\), of a square isotropic plate with all four edges rotationally restrained, where \(k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=-1} = k^r_{\eta=1}\).}  
+	\caption{The first six frequency parameters, $2a\Omega = 2a\sqrt[4]{\rho h \omega^2/D_{11}}$, of a square isotropic plate with all four edges rotationally restrained, where $k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=-1} = k^r_{\eta=1}$.}
 	\begin{tabular}{c l c c c c c c}
 		\toprule
 		\multicolumn{1}{c}{} & \multicolumn{6}{c}{$2a\Omega$} \\ 
@@ -1192,10 +1196,10 @@ As shown in \Cref{tab:rot1}, the maximum difference between \(\Omega\) and the s
 	\label{tab:rot1}
 \end{table}
 
-The next example considers a rectangular orthotropic plate with three simply supported edges (\(k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=1} = 0\)), while the edge at \(\eta = -1\) is rotationally restrained. 
-The material properties are consistent with those in \citealp{zhang2019new}, where \(2D_{11} = 2D_{22} = D_3\) and \(\nu_{12} = \nu_{21} = 0.3\).  
-\Cref{tab:oth2} shows the fundamental frequency results for different length ratios (\(b/a\)), comparing them with those reported in \citealp{zhang2019new}. 
-The maximum observed difference is $0.8\%$ when \(r_{\eta=-1} = 10\). 
+The next example considers a rectangular orthotropic plate with three simply supported edges ($k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=1} = 0$), while the edge at $\eta = -1$ is rotationally restrained. 
+The material properties are consistent with those in \citealp{zhang2019new}, where $2D_{11} = 2D_{22} = D_3$ and $\nu_{12} = \nu_{21} = 0.3$.  
+\Cref{tab:oth2} shows the fundamental frequency results for different length ratios ($b/a$), comparing them with those reported in \citealp{zhang2019new}. 
+The maximum observed difference is $0.8\%$ when $r_{\eta=-1} = 10$. 
 
 In certain numerical calculations involving rotationally restrained boundary conditions, the variables $\alpha_1$ and $\alpha_2$ may take complex values rather than being purely real.  
 Consequently, the mode shape coefficients $A_1$, $A_2$, $B_1$, and $B_2$ become complex-valued, leading to $\mathbf{R}$ and $\mathbf{Q}^{-1}$ being complex matrices.  
@@ -1207,7 +1211,7 @@ Thus, the frequency $\Omega$ can be obtained by solving $\mathbf{K}$ using the r
 
 \begin{table}[!htbp]  
 	\centering
-	\caption{Fundamental frequency parameter \(2a\Omega = 2a\sqrt[4]{\rho h \omega^2/D_{11}}\) of rectangular orthotropic plates with three edges simply supported (\(k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=1} = 0\)) and the edge at \(\eta = -1\) rotationally restrained.}
+	\caption{Fundamental frequency parameter $2a\Omega = 2a\sqrt[4]{\rho h \omega^2/D_{11}}$ of rectangular orthotropic plates with three edges simply supported ($k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=1} = 0$) and the edge at $\eta = -1$ rotationally restrained.}
 	\begin{tabular}{c c c c c c c }
 		\toprule
 		\multicolumn{2}{c}{} & \multicolumn{4}{c}{$2a\Omega$} & \\ 
@@ -1239,15 +1243,15 @@ In this study, the dynamic stiffness matrix (DSM) based on the extended separati
 
 Instead of solving highly nonlinear eigenvalue equations involved in the SOV methods, the extended SOV type solution is adopted to construct the dynamic stiffness matrices.
 Several novel techniques have proposed to solve the eigenvalue problem and mode shape computation.
-The challenge of determining the fully clamped frequencies using the Wittrick-Williams (W-W) algorithm is resolved by finding the simply supported frequencies, whose closed-form expression can be easily derived based on the SOV method.  
+The challenge of determining the fully clamped frequencies using the Wittrick-Williams (W-W) algorithm is resolved by computing the frequencies under specific boundary conditions, whose closed-form expression can be easily derived using the SOV method.  
 
-Classical boundary conditions, such as guided, simply supported, clamped, and free edges, can be realized by setting the translational springs (\(k^v_\xi\)) and rotational springs (\(k^r_\xi\)) along the plate edges to either zero or infinity.  
+Classical boundary conditions, such as guided, simply supported, clamped, and free edges, can be realized by setting the translational springs ($k^v_\xi$) and rotational springs ($k^r_\xi$) along the plate edges to either zero or infinity.  
 Numerical experiments have validated accuracy of this approach for these boundary conditions.  
 The results shows that the SOV type solution can also be extended to handle elastically restrained boundary conditions.
 Despite certain approximations inherent in some elastically restrained cases, the maximum percentage error across all numerical experiments remains within $1.25\%$.  
 This may occur because the SOV type solution used is derived from the weak-form governing equation, which is based on Rayleigh's principle.  
 
-Since the SOV type solution \(\phi(\xi) \psi(\eta)\) consists of only a single term for each mode order, unlike the infinite series expansions used in the traditional DSM, each eigenvalue solution can be explicitly expressed.  
+Since the SOV type solution $\phi(\xi) \psi(\eta)$ consists of only a single term for each mode order, unlike the infinite series expansions used in the traditional DSM, each eigenvalue solution can be explicitly expressed.  
 This suggests the potential for obtaining more concise solutions for assembled plate structures compared to traditional DSM methods.  
 
 \FloatBarrier
@@ -1255,7 +1259,7 @@ This suggests the potential for obtaining more concise solutions for assembled p
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\thesection.\arabic{equation}}
 \section{Integral parameters}\label{appendA}
-The integral parameters \( I_1, I_2, I_3, \) and \( I_4 \) are defined as follows:
+The integral parameters $ I_1$, $I_2$, $I_3$, and $ I_4$ are defined as follows:
 %
 \begin{equation}\label{eq:inte_phi}
 	\begin{aligned}
@@ -1301,7 +1305,7 @@ The integral parameters \( I_1, I_2, I_3, \) and \( I_4 \) are defined as follow
 	\end{split}
 \end{equation}
 %
-The integral parameters \( J_1 \), \( J_2 \), \( J_3 \), and \( J_4 \) can be obtained by replacing \( B_1 \) to \( B_4 \) by \( A_1 \) to \( A_4 \), respectively, and \( \alpha_2 \) and \( \beta_2 \) by \( \alpha_1 \) and \( \beta_1 \), respectively.
+The integral parameters $J_1$, $J_2$, $J_3$, and $J_4$ can be obtained by replacing $B_1$ to $B_4$ by $ A_1 $ to $A_4$, respectively, and $\alpha_2$ and $\beta_2$ by $\alpha_1$ and $\beta_1$, respectively.
 
 \end{appendices}
 \FloatBarrier
