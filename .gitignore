@@ -27,3 +27,5 @@ dist/
 *.spl
 *.synctex.gz
 *.log
+*.fdb_latexmk
+*.fls
