@@ -25,19 +25,13 @@
 \makenomenclature
 \usepackage{longtable}
 \usepackage{lineno}
-\usetikzlibrary{arrows.meta} % Load the arrows.meta library
+\usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes,positioning}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \AtBeginEnvironment{appendices}{\crefalias{section}{appendix}}
-
-% Derivatives should be upright d (JSV requires it)
-% I don't have the docs for the derivate package with me, so I'll just do this bad hack for now.
-% Could update all the ODEs to use the derivative package
-% Update: hack didn't work due to \d already defined somewhere - leaving this for now
-%\DeclareMathOperator{\d}{\textnormal{d}}
 
 \newcommand{\kph}{~\unit{\kilo\metre\per\hour}\xspace}
 \newcommand{\um}{~\unit{\metre}\xspace}
@@ -48,7 +42,6 @@
 \newcommand{\ustif}{~\unit{\newton\per\metre}\xspace}
 \newcommand{\udamp}{~\unit{\newton\second\per\metre}\xspace}
 \newcommand{\DAF}{\textnormal{DAF}}
-% Hacky - is there a better upright i?
 %\newcommand{\ii}{\textnormal{i}}
 \newcommand{\id}{\mathrm{d}\mkern1mu}
 \newcommand{\ii}{\mathrm{i}\mkern1mu}
@@ -58,11 +51,6 @@
 \newcommand{\nugpa}{~\si{\giga\pascal}\xspace}
 \begin{document}
 
-% I made some comments about x/L being xi - it's not used much so you can ignore these.
-% There are some cases where I added text in [square brackets] and not necessarily in a latex comment
-% Check the bib file - two references had no journal - I added these as XXXX
-% Section 4 does too much - could you consider splitting this section up a bit? 
-% I did add some more subsubsections to try structure section 4 a bit better, but I'm not sure it's optimal yet.
 \begin{frontmatter}
 \title{Dynamic stiffness matrix based on the extended separation-of-variables solution for the free vibration of orthotropic rectangular thin plates}
 \author[1]{Shiyi Mei}\ead{shiyi.mei1@monash.edu}
@@ -165,15 +153,8 @@ Instead of solving the free vibration of the thin orthotropic plate using \Cref{
 	\end{split}
 \end{equation}
 %
-% It doesn't make sense to have 'mag' as a subscript - P.E. is just U, and it's already a scalar.
-% And it also doesn't make sense to have '0' as the subscript for maginitude for K.E., which is just K.
-% I guess you have some reason? But 'magnitude' of a scalar isn't really a thing worth highlighting.
-%
 where $\delta$ denotes variation, $U$ is the magnitude of the potential energy of the plate, and $T$ represents the magnitude of the kinetic energy of the plate.
 The potential energy of the plate can be expressed as \cite{xing2020extended}:
-%
-% What is superscript 'I' below? Why doesn't 'T' have one?
-% I know you're trying to separate the two ways of calculating the same thing, but it should be consistent.
 %
 \begin{equation}\label{eq:poten_energy}
 	\begin{split}
@@ -194,8 +175,6 @@ Assuming the solution of the deflection $ W(x, y; t) = w(x, y) e^{i \omega t} $ 
 where $ \ii = \sqrt{-1} $, $ w(x, y) $ is the mode shape, and $ \omega $ is the radial frequency.  
 By substituting $ W(x, y; t) = w(x, y) e^{i \omega t} $ into \Cref{eq:poten_energy,eq:kine_energy} and expressing the system in dimensionless coordinates, we have:
 %
-% U sub/superscript notation hell?!
-%
 \begin{equation}\label{eq:poten_energy_mag}
 	\begin{split}
 		U^{I} &= \frac{ab}{2} \iint \left[ \frac{D_{11}}{a^4} \left( \frac{\partial^2 w}{\partial \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2} \frac{\partial^2 w}{\partial \xi^2} \frac{\partial^2 w}{\partial \eta^2} + \frac{D_{22}}{b^4} \left( \frac{\partial^2 w}{\partial \eta^2} \right)^2 \right. \\
@@ -204,8 +183,6 @@ By substituting $ W(x, y; t) = w(x, y) e^{i \omega t} $ into \Cref{eq:poten_ener
 \end{equation}
 %
 and
-%
-% Shouldn't this be U on the LHS? How can T = omega**2 T (whether T_0 or not)?
 %
 \begin{equation}\label{eq:kine_energy_mag}
 	\begin{split}
@@ -232,11 +209,6 @@ where $ \phi(\xi) $ and $\psi(\eta) $ can be expressed as:
 Based on \Cref{eq:Rayleigh}, the frequencies $\omega_x$ and $\omega_y$, corresponding to the mode shapes $\phi(\xi)$ and $\psi(\eta)$, respectively, are assumed to be independent of each other.
 This is a common and important assumption in SOV methods, and $\omega_x$ and $\omega_y$ can be different in a mathematical sense \cite{xing2020extended}.
 
-% worth a comment here on:
-% - is this a common assumption?
-% - Do you later validate or check this assumption?
-% - What happens if this assumption is not met?
-
 \subsection{Dynamic stiffness matrix corresponding to $\omega_x$}\label{sec:DSMx}
 For given general homogeneous boundary conditions, we can first assume that the mode shape $\psi(\eta)$ corresponding to the $y$-direction is known. 
 Supposing the edges of the plate in both the $x$- and $y$-directions are elastically restrained by homogeneous vertical translational and rotational springs.
@@ -250,8 +222,6 @@ Thus, the potential energy along the supported edge in the $x$-direction can be 
 	\end{split}
 \end{equation}
 %
-% What is superscript II supposed to mean?
-% Why not just use U subscript x for this contribution of these supports?
 From \Cref{eq:poten_energy_edgex}, the magnitude of potential energy along the plate edges in the $x$-direction, expressed in dimensionless coordinates, is obtained as:
 
 %
@@ -262,8 +232,6 @@ From \Cref{eq:poten_energy_edgex}, the magnitude of potential energy along the p
 	\end{split}
 \end{equation}
 %
-% Isn't this just change of variables? dimensional to non-dimensional space? Maybe say this.
-% Not sure why this now deserves a 'mag' subscript.
 The magnitude of total potential energy of the plate in the $x$-direction can be obtained from \Cref{eq:poten_energy_mag,eq:poten_energy_edgex2} as:
 %
 \begin{equation}\label{eq:poten_energy_tolx}
@@ -291,7 +259,6 @@ where the integral parameters $I_1$, $I_2$, $I_3$, and $ I_4$ are defined and ex
 
 By taking \Cref{eq:displace_func} into account, the coefficient $T_0$ of the kinetic energy from \Cref{eq:kine_energy_mag} for the plate in the $x$-direction can be expressed as:
 %
-% The notation needs to be cleaned up a bit, or more clearly defined.
 \begin{equation}\label{eq:kine_energyx}
 	\begin{split}
 		T_0 = \frac{ab}{2}\rho h\iint w^2 \, \id \xi \, \id \eta = \frac{ab}{2}\rho h I_1\int_{-1}^{1} \phi^2 \, \id \xi.
@@ -313,8 +280,8 @@ and by substituting \Cref{eq:poten_energy_tolx2,eq:kine_energyx} into \Cref{eq:R
 		0 &= \int_{-1}^{1} \bigg[ \frac{D_{11}}{a^4} I_1 \frac{\id^4 \phi}{\id \xi^4} 
 		+ \bigg( \frac{2D_{12}}{a^2b^2} I_2 - \frac{4D_{66}}{a^2b^2} I_3 \bigg) \frac{\id^2 \phi}{\id \xi^2} \\
 		&\qquad + \bigg( \frac{D_{22}}{b^4} I_4 - \omega_x^2 \rho h I_1 \bigg) \phi \bigg] \delta \phi \, \id \xi \\
-		&\qquad + \frac{2k^v_{\xi=-1}}{a} I_1 \big(\phi \delta \phi\big)_{\xi=-1} 
-		+ \frac{2k^v_{\xi=1}}{a} I_1 \big(\phi \delta \phi\big)_{\xi=1} \\
+		&\qquad + \frac{2k^v_{\xi=-1}}{a} I_1 \big(\phi\, \delta \phi\big)_{\xi=-1} 
+		+ \frac{2k^v_{\xi=1}}{a} I_1 \big(\phi\, \delta \phi\big)_{\xi=1} \\
 		&\qquad + \bigg[ \bigg( \frac{4D_{66}}{a^2b^2} I_3 - \frac{D_{12}}{a^2b^2} I_2 \bigg) \frac{\id \phi}{\id \xi} 
 		- \frac{D_{11}}{a^4} I_1 \frac{\id^3 \phi}{\id \xi^3} \bigg] \delta \phi \Big|^{\xi=1}_{\xi=-1} \\
 		&\qquad + \bigg( \frac{D_{12}}{a^2b^2} I_2 \phi + \frac{D_{11}}{a^4} I_1 \frac{\id^2 \phi}{\id \xi^2} \bigg) 
@@ -325,8 +292,6 @@ and by substituting \Cref{eq:poten_energy_tolx2,eq:kine_energyx} into \Cref{eq:R
 \end{equation}
 %
 Thus, the governing differential equation in the $ x $-direction can be obtained from the integration part in \Cref{eq:Rayleighx2}:
-%
-% Very nice!
 %
 \begin{equation}\label{eq:ODEx}
 		\frac{\id^4 \phi}{\id \xi^4}+ 2\chi^2\left(\frac{D_{12}I_2}{D_{11}I_1}-2\frac{D_{66}I_3}{D_{11}I_1}\right)\frac{\id^2 \phi}{\id \xi^2}+\left(\chi^4\frac{D_{22}I_4}{D_{11}I_1}-a^4\Omega_x^4\right)\phi=0,
@@ -394,8 +359,13 @@ Thus, we can obtain the shear force and bending moment equilibrium along the edg
 	\end{align}
 \end{subequations}
 %
-Substituting \Cref{eq:phi_solution1} into \Cref{eq:boundaryx}, and denoting $k^{v*}_{\xi} = \frac{2a^3 k^v_{\xi}}{D_{11}} $, 
-$ k^{r*}_{\eta} = \frac{2a k^r_{\xi}}{D_{11}} $, $ S_{\alpha_1} = \sin \alpha_1 $, $ C_{\alpha_1} =\cos \alpha_1 $, $ Sh_{\beta_1} = \sinh \beta_1$, and $ Ch_{\beta_1} = \cosh \beta_1 $, we have:
+Substituting \Cref{eq:phi_solution1} into \Cref{eq:boundaryx}, and denoting 
+$k^{v*}_{\xi} \equiv \frac{2a^3 k^v_{\xi}}{D_{11}} $, 
+$ k^{r*}_{\eta} \equiv \frac{2a k^r_{\xi}}{D_{11}} $, 
+$ S_{\alpha_1} \equiv \sin \alpha_1 $, 
+$ C_{\alpha_1} \equiv \cos \alpha_1 $, 
+$ Sh_{\beta_1} \equiv \sinh \beta_1$, 
+and $ Ch_{\beta_1} \equiv \cosh \beta_1 $, we have:
 %
 \begin{equation}\label{eq:ABx}
 	\begin{split}
@@ -454,7 +424,6 @@ However, solving these transcendental equations is cumbersome and so the DSM is 
 
 To develop the plate's dynamic stiffness matrix, with the help of \Cref{eq:phi_solution1}, the vertical displacement and rotation corresponding to the mode shape $\phi(\xi)$ along the $x$-direction at edges $\xi = -1$ and $\xi = 1$ can be expressed as:
 %
-% In below - isn't alpha_1/a just b?
 \begin{equation}\label{eq:UBx}
 	\begin{split}
 		\begin{Bmatrix}
@@ -489,13 +458,6 @@ This matrix can be used to compute the natural frequencies of the system instead
 and the method for the computation will be given in \Cref{sec:WWA}.
 
 \subsection{Dynamic stiffness matrix corresponding to $\omega_y$}\label{sec:DSMy}
-%
-% This section follows the previous section exactly. I'm wondering the value of giving all the same details
-% again? It canbe shortened to only provide what is different, e.g. J, alpha_2, beta_2 etc? 
-% It could start off with something like "Following the same steps as for the x-direction, we have..."
-% All my changes above apply to this section.
-% it's far too much copy & paste right now, even down to the unnecessary definitions of C and S etc
-% 
 In this section, the mode shape $\phi(\xi)$ derived in $\Cref{sec:DSMx}$ is utilized to obtain the dynamic stiffness matrix in the $y$-direction.  
 The vertical translational and rotational springs at $\eta = -1$ are denoted as $k^v_{\eta = -1}$ and $k^r_{\eta = -1}$, respectively, while those at $\eta = 1$ are represented by $k^v_{\eta = 1}$ and $k^r_{\eta = 1}$.
 
@@ -605,13 +567,13 @@ and from the $\delta \frac{\id \psi}{\id \eta}$ part, the bending moment equilib
 \end{equation}
 %
 Similarly, from the shear force and bending moment equilibrium, and by denoting 
-$k^{v*}_{\eta} = \frac{2b^3 k^v_{\eta}}{D_{22}} $, 
-$ k^{r*}_{\eta} = \frac{2b k^r_{\eta}}{D_{22}} $, 
-$S_{\alpha_2}=\sin\alpha_2  $, 
-$ C_{\alpha_2}=\cos\alpha_2  $, 
-$ Sh_{\beta_2}=\sinh\beta_2$, and 
-$Ch_{\beta_2}= \cosh\beta_2$, 
-We can obtain:
+$k^{v*}_{\eta} \equiv \frac{2b^3 k^v_{\eta}}{D_{22}} $, 
+$ k^{r*}_{\eta} \equiv \frac{2b k^r_{\eta}}{D_{22}} $, 
+$S_{\alpha_2}\equiv\sin\alpha_2  $, 
+$ C_{\alpha_2}\equiv\cos\alpha_2  $, 
+$ Sh_{\beta_2}\equiv\sinh\beta_2$, and 
+$Ch_{\beta_2}\equiv \cosh\beta_2$, 
+we obtain:
 %
 \begin{equation}\label{eq:ABy}
 	\begin{split}
@@ -725,7 +687,6 @@ With the help of \Cref{eq:alphax1,eq:SSx}, the closed-form solution of the $n_x$
 %
 \begin{equation}\label{eq:J_simpx}
 	b \Omega^4_{x,n_x} =
-		%\large % slightly smaller than \Large
 		\begin{aligned}
 			&\left[\left(\frac{n_x\pi}{2\chi}\right)^2 - \frac{D_{12}S_2}{D_{11}S_1} + 2 \frac{D_{66}S_3}{D_{11}S_1}\right]^2 \\
 			&\qquad- \left(\frac{D_{12}S_2}{D_{11}S_1} - 2 \frac{D_{66}S_3}{D_{11}S_1}\right)^2
