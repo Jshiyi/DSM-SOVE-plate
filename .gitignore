@@ -1,12 +1,13 @@
+# macOS Finder
 .DS_Store
-.idea/
 
-# Ignore user specific IDEA components
+# IDE settings
+.idea/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/codeStyleSettings.xml
 
-# Byte-compiled / optimized / DLL files
+# Python cache & compiled files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -18,6 +19,7 @@ build/
 develop-eggs/
 dist/
 
+# LaTeX auxiliary files
 *.aux
 *.bbl
 *.blg
@@ -29,3 +31,8 @@ dist/
 *.log
 *.fdb_latexmk
 *.fls
+
+# Beamer/Presentation LaTeX files you don’t want to commit
+*.nav
+*.snm
+*.toc
