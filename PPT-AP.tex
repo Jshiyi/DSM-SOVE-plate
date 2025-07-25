@@ -1,0 +1,294 @@
+\documentclass{beamer}
+\usepackage{tikz}
+% Force exact PDF slide size
+\usepackage{geometry}
+\geometry{paperwidth=35cm,paperheight=14cm} % ~1328x531px @ 96dpi
+\usepackage{xcolor}
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}   % <-- Hides bottom-right symbols
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox} % powerful box package
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes,positioning}
+\usepackage{subcaption}
+\begin{document}
+	
+\begin{frame}
+\begin{columns}[T]	
+	% Column 1
+	\begin{column}{0.31\textwidth}
+		{\Large\textbf{ \textcolor{red}{Closed-form} DSM method for the free vibration of orthotropic rectangular thin plates}}\par\vspace{0.4em}
+		
+		% Create a box around the equations
+		\fbox{%
+			\scalebox{0.8}{%
+				\begin{minipage}{1.2\linewidth}
+					\centering
+					\textbf{Four SOV-type eigenvalue equations}\par\vspace{0.3em}
+					\begin{align*}
+						\alpha_1 &= \chi \sqrt{\sqrt{\left(\frac{D_{12}I_2}{D_{11}I_1}-2\frac{D_{66}I_3}{D_{11}I_1}\right)^2 
+								- \frac{D_{22}I_4}{D_{11}I_1} + b^4\Omega_x^4} 
+							+ \frac{D_{12}I_2}{D_{11}I_1} - 2\frac{D_{66}I_3}{D_{11}I_1}}\\[0.3em]
+						\beta_1 &= \chi \sqrt{\sqrt{\left(\frac{D_{12}I_2}{D_{11}I_1}-2\frac{D_{66}I_3}{D_{11}I_1}\right)^2 
+								- \frac{D_{22}I_4}{D_{11}I_1} + b^4\Omega_x^4} 
+							- \frac{D_{12}I_2}{D_{11}I_1} + 2\frac{D_{66}I_3}{D_{11}I_1}}\\
+						\alpha_2 &= \frac{1}{\chi} \sqrt{ \sqrt{ \left( \frac{D_{12}J_2}{D_{22}J_1} - 2\frac{D_{66}J_3}{D_{22}J_1} \right)^2 
+								- \frac{D_{11}J_4}{D_{22}J_1} + \frac{a^4 D_{11}}{D_{22}} \Omega_y^4 } 
+							+ \frac{D_{12}J_2}{D_{22}J_1} - 2 \frac{D_{66}J_3}{D_{22}J_1}}\\[0.3em]
+						\beta_2 &= \frac{1}{\chi} \sqrt{ \sqrt{ \left( \frac{D_{12}J_2}{D_{22}J_1} - 2 \frac{D_{66}J_3}{D_{22}J_1} \right)^2 
+								- \frac{D_{11}J_4}{D_{22}J_1} + \frac{a^4 D_{11}}{D_{22}} \Omega_y^4 } 
+							- \frac{D_{12}J_2}{D_{22}J_1} + 2 \frac{D_{66}J_3}{D_{22}J_1}}
+					\end{align*}
+				\end{minipage}
+			}%
+		} % end fbox
+		
+		\vspace{0.5em}
+		\centering {\Huge \textbf{+}}\vspace{0.5em}
+		\tikz[remember picture] \node (node1) {}; % <--- mark start node
+		% Create a box around the equations
+		\fbox{%
+			\scalebox{0.8}{%
+				\begin{minipage}{1.2\linewidth}
+					\centering
+					\textbf{Two eigenvalue equations from boundary condition}\par\vspace{0.5em}
+					
+					% Two-column layout inside the box
+					\begin{minipage}{0.66\linewidth}
+						\centering
+						\centering
+						\resizebox{0.8\textwidth}{!}{\input{figs/general_plate_tikz.tex}}
+						
+						\small The orthotropic rectangular plate with all edges\\\hspace*{-4cm} elastically restrained.
+					\end{minipage}
+					\hfill
+					\begin{minipage}{0.30\linewidth}
+						\centering
+						\begin{align*}
+							\det(\mathbf{R}_x) = 0
+						\end{align*}\\
+						\begin{align*}
+							\det(\mathbf{R}_y) = 0
+						\end{align*}
+					\end{minipage}%
+				\end{minipage}
+			}%
+		} % end fbox
+	\end{column}
+		
+		% Column 2
+		\begin{column}{0.31\textwidth}
+			
+			{\Large\textbf{\textcolor{red}{SOV‑DSM} formulation and solution}}\par\vspace{0.4em}
+			
+			% Create a box around the equations
+			\fbox{%
+				\scalebox{0.8}{%
+					\begin{minipage}{1.2\linewidth}
+
+						
+						% Two-column layout inside the box
+						\begin{minipage}{0.49\linewidth}
+							\centering
+							\centering
+							\textbf{Traditional SOV methods}\par\vspace{0.5em}
+							\begin{itemize}
+								\item Six unknown variables: \textcolor{red}{$\alpha_1$, $\beta_1$, $\Omega_x$, $\alpha_2$, $\beta_2$, $\Omega_y$.}
+								\item Four nonlinear and two \textcolor{red}{highly nonlinear transcendental} equations.
+								\item Expensive computational cost and convergence difficulties.
+							\end{itemize}
+						\end{minipage}
+						\hfill
+						\begin{minipage}{0.49\linewidth}
+							\centering
+							\textbf{Construct SOV-DS matrices}\par\vspace{0.3em}
+							\begin{align*}
+								\mathbf{K}_x = \mathbf{R}_x\mathbf{Q}_x^{-1}\\
+								\mathbf{K}_y = \mathbf{R}_y\mathbf{Q}_y^{-1}
+							\end{align*}
+							\begin{itemize}
+								\item Two unknown variables: \textcolor{red}{ $\Omega_x$,$\Omega_y$.}
+								\item Two \textcolor{red}{highly complex} SOV‑DS matrices: $\mathbf{K}_x(\Omega_x)$ and $\mathbf{K}_y(\Omega_y)$.
+	
+							\end{itemize}
+						\end{minipage}%
+					\end{minipage}
+				}%
+			} % end fbox
+			
+			\vspace{0.5em}
+			\centering {\Huge \phantom{\textbf{+}}}\vspace{0.5em}
+			\tikz[remember picture] \node (node2) {}; % <--- mark start node
+			% Create a box around the equations
+			\fbox{%
+				\scalebox{0.8}{%
+					
+					\begin{minipage}{1.2\linewidth}
+						\centering
+						\textbf{\textcolor{red}{Enhanced} Wittrick–Williams algorithm to solve SOV‑DS matrices:}\par\vspace{0.5em}
+						\textbf{$J(p) = J(\bar{p}_1) - J_k(\bar{p}_1) + J_k(p,\omega^*)$}\par\vspace{0.5em}
+						\hspace*{-0.5cm}\centering
+						\textbf{The problem of solving \textcolor{red}{$J_0(p_1)$} is transformed into solving \textcolor{red}{$J(\bar{p}_1)$}.}
+						
+						\vspace{0.3cm}
+						% Two-column layout inside the box
+						
+						\begin{minipage}{0.69\linewidth}
+							\hspace*{-2cm}\centering
+							\textbf{If \textcolor{red}{$\bar{p}_1$} = S–S boundary condition,\\[0.em]\hspace*{-1.3cm}\textcolor{red}{closed-form} expression to find \textcolor{red}{$J(\bar{p}_1)$}:}\par\vspace{0.em}
+							\begin{align*}
+								b \Omega^4_{x,n_x} =
+								\begin{aligned}
+									&\left[\left(\frac{n_x\pi}{2\chi}\right)^2 - \frac{D_{12}S_2}{D_{11}S_1} + 2 \frac{D_{66}S_3}{D_{11}S_1}\right]^2 \\
+									&\qquad- \left(\frac{D_{12}S_2}{D_{11}S_1} - 2 \frac{D_{66}S_3}{D_{11}S_1}\right)^2
+									+ \frac{D_{22}S_4}{D_{11}S_1}\\
+								\end{aligned}
+							\end{align*}
+							\begin{align*}
+								a\Omega^4_{y,n_y}= 
+								\begin{aligned}
+									&\frac{D_{22}}{D_{11}}\Biggl\{\left[\left(\frac{n_y\pi\chi}{2}\right)^2 - \frac{D_{12}T_2}{D_{22}T_1} + 2 \frac{D_{66}T_3}{D_{22}T_1}\right]^2 \\ 
+									&\qquad - \left(\frac{D_{12}T_2}{D_{22}T_1} - 2 \frac{D_{66}T_3}{D_{22}T_1}\right)^2
+									+ \frac{D_{11}T_4}{D_{22}T_1}\Biggr\}
+								\end{aligned}
+							\end{align*}
+						\end{minipage}%
+						\hfill
+						\begin{minipage}{0.3\linewidth}
+						    \hspace*{-1.3cm}\centering
+							\textbf{Other specific\\[0.3em]boundary condition:}
+							\begin{itemize}
+								\item $\bar{p}_1 = S–G$.
+								\item $\bar{p}_1 = G–G$.
+								\item $J(\bar{p}_1)$ available.
+							\end{itemize}
+						\end{minipage}
+						
+					\end{minipage}
+				}%
+			} % end fbox
+		\end{column}
+		
+		% colum 3
+		\begin{column}{0.31\textwidth}
+		
+			% Create a box around the equations
+			\fbox{%
+				\scalebox{0.8}{%
+					\begin{minipage}{1.2\linewidth}
+
+						
+						% Two-column layout inside the box
+						\begin{minipage}{0.6\linewidth}
+							\centering
+							\textbf{The square orthotropic plate with FFFF boundary conditions:}\par\vspace{0.5em}
+							\centering
+							\begin{figure}[h!]
+								\centering
+								\scalebox{0.6}{%
+									\begin{minipage}{\textwidth}
+										\centering
+										% Row 1
+										\begin{subfigure}[b]{0.45\linewidth}
+											\includegraphics[width=\linewidth]{figs/FFFF1.png}
+											\caption{}
+										\end{subfigure}
+										\hfill
+										\begin{subfigure}[b]{0.45\linewidth}
+											\includegraphics[width=\linewidth]{figs/FFFF2.png}
+											\caption{}
+										\end{subfigure}
+										
+										\vspace{0.8em}
+										
+										% Row 2
+										\begin{subfigure}[b]{0.45\linewidth}
+											\includegraphics[width=\linewidth]{figs/FFFF3.png}
+											\caption{}
+										\end{subfigure}
+										\hfill
+										\begin{subfigure}[b]{0.45\linewidth}
+											\includegraphics[width=\linewidth]{figs/FFFF4.png}
+											\caption{}
+										\end{subfigure}
+									\end{minipage}
+								} % end scalebox
+								
+							\end{figure}
+							\small{ 
+								(a) the first mode; (b) the second mode;\\[0.em]\hspace*{-0.cm} (c) the third mode; (d) the fourth mode.}
+						\end{minipage}
+						\hfill
+						\begin{minipage}{0.39\linewidth}
+							\centering
+							\textbf{Advantages:}
+							\begin{itemize}
+								\item General solution for arbitrary boundary conditions.
+								\item Closed-form DSM.
+								\item Explicit closed-form expression for the $J_0$ term.
+								\item Avoids solving highly nonlinear equations.
+							\end{itemize}
+						\end{minipage}%
+					\end{minipage}
+				}%
+			} % end fbox
+			% Add more space here between the two boxes
+			\vspace{2.5em}   % <-- increase this for more gap
+			
+			{\Large\textbf{Mode shape computation for \textcolor{red}{arbitrary boundary conditions}}}\par\vspace{0.4em}
+			% Create a box around the equations
+			\fbox{%
+				\scalebox{0.8}{%
+					\begin{minipage}{1.2\linewidth}
+						\hspace*{-7.5cm}\centering
+						\textbf{First-order Taylor series:}
+						\begin{align*}
+							\mathbf{R}_{x,k}(\omega_k)\mathbf{A}_k = \mathbf{R}_{x,a}\mathbf{A}_k + (\omega_k - \omega_a)\mathbf{R}'_{x,a}\mathbf{A}_k + O\left((\omega_k - \omega_a)^2\right) = 0
+						\end{align*}
+						\hspace*{-6.8cm}\centering
+						\textbf{Inverse iteration procedure:}
+						\begin{align*}
+							\bar{\mathbf{A}}^{(i+1)} = \mathbf{R}_{x,a}^{-1} \mathbf{R}^{'}_{x,a} \mathbf{A}^{(i)}
+						\end{align*}
+						\hspace*{-9.3cm}\centering
+						\textbf{Mode shape:}
+						\begin{align*}
+							\phi(\xi) &= A_1 \sin{(\alpha_1 \xi)} + A_2 \cos{(\alpha_1 \xi)} + A_3 \sinh{(\beta_1 \xi)} + A_4 \cosh{(\beta_1 \xi)}\\
+							\psi(\eta) &= B_1 \sin{(\alpha_2 \eta)} + B_2 \cos{(\alpha_2 \eta)} + B_3 \sinh{(\beta_2 \eta)} + B_4 \cosh{(\beta_2 \eta)}
+						\end{align*}
+					\end{minipage}
+				}%
+			} % end fbox
+		\end{column}
+		
+	\end{columns}
+	
+% === Now overlay the arrow after columns ===
+\begin{tikzpicture}[remember picture, overlay, >=Triangle]
+	\draw[->, line width=1.2mm, red]
+	([xshift=4.5cm,yshift=6cm]node1.east)
+	-- ++(0.8cm,0);
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture, overlay, >=Triangle]
+	\draw[->, line width=1.2mm, red]
+	([xshift=-0.5cm,yshift=0.5cm]node2.east)
+	-- ++(0cm,-0.8cm);
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture, overlay, >=Triangle]
+	\draw[->, line width=1.2mm, red]
+	([xshift=4.5cm,yshift=-6cm]node2.east)
+	-- ++(0.8cm,0);
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture, overlay, >=Triangle]
+	\draw[->, line width=1.2mm, red]
+	([xshift=11.cm,yshift=-2cm]node2.east)
+	-- ++(0cm,0.8cm);
+\end{tikzpicture}
+
+\end{frame}
+	
+\end{document}
+
+
+
+
