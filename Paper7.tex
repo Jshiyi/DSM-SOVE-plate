@@ -64,7 +64,7 @@
 \affiliation[1]{organization={Department of Civil Engineering, Monash University},city={Melbourne},state={Victoria},country={Australia}}
 \affiliation[2]{organization={Department of Structural Engineering, Norwegian University of Science \& Technology NTNU},city={Trondheim}, country={Norway}}
 \begin{abstract}
-	A separation-of-variable dynamic stiffness matrix (SOV-DSM) method is proposed for the free vibration analysis of an orthotropic rectangular thin plate with general homogeneous boundary conditions.  
+	A separation-of-variable dynamic stiffness matrix method (SOV-DSM) is proposed for the free vibration analysis of an orthotropic rectangular thin plate with general homogeneous boundary conditions.  
 	Firstly, the exact SOV solution satisfying Rayleigh’s principle is extended to handle arbitrary boundary conditions and then applied to develop closed-form dynamic stiffness formulations.
 	Then, an enhanced Wittrick–Williams (W-W) algorithm is used to solve the eigenvalue problem rather than solving the highly nonlinear eigenvalue equations.
 	The $J_0$ count problem involved in applying the W-W algorithm is addressed by providing an explicit and closed-form expression for the $J_0$ term based on the characteristics of the SOV solution.
@@ -74,7 +74,7 @@
 \end{frontmatter}
 \linenumbers
 \section{Introduction}
-Rectangular plates play an important role in various engineering fields, including civil, mechanical, and aerospace engineering \citep{biancolini2005approximate}. 
+Rectangular plates play an important role in many engineering fields, including civil, mechanical, and aerospace engineering \citep{biancolini2005approximate}. 
 The free vibration of plates has been a fundamental research problem for over two centuries. 
 The earliest exact solutions for this problem are the Navier \citep{navier1823extrait} and Levy \citep{levy1899equilibre} solutions, which require at least one pair of opposite edges to be simply supported or guided.
 To solve problems with other boundary conditions, approximate solutions such as the Rayleigh–Ritz method \cite{leissa1973free,lam1989vibration,zhao2025free,jain2024bending,bagheri2024analysis}, the Galerkin method \cite{laura1967study,krysl1995analysis,ma2024analysis,ma2024error,pereira2025modified} and finite element method (FEM) \cite{zhao2024fast,yang2022analysis,paccola2016continuous,carrera2024finite,yang2025semi} have been widely applied. 
@@ -90,7 +90,7 @@ Therefore, solving the corresponding eigenvalue problem can be computationally e
 Despite being a powerful method for the dynamic analysis of plate assemblies, the FEM requires a sufficient number of elements and is computationally expensive to accurately capture higher-order modes.
 Thus, the DSM method was developed as an accurate and efficient analytical approach to alternatively solve complex plate structures \cite{boscolo2011dynamic,fazzolari2013exact}. 
 The DSM can be considered as an analytical FEM since the mode functions of the plate are expressed by analytical solutions, where Levy-type solution \cite{ghorbel2015dynamic} or components of Fourier series \cite{williams1995wave,banerjee2015dynamic,liu2016free,liu2024wavenumber,zhou2024wavenumber} are applied.
-To avoid solving the cumbersome transcendental frequency equation directly, the Wittrick-Williams (W-W) algorithm \cite{wittrick1971general} is applied to the eigenvalue problem.
+To avoid solving the cumbersome transcendental frequency equation directly, the Wittrick-Williams (W-W) algorithm \cite{wittrick1971general} can be applied to the eigenvalue problem.
 The W-W algorithm determines the lower and upper bounds of natural frequencies to arbitrary precision rather than solving the frequency equation directly. 
 Thus, the DSM has the potential to be effectively and systematically solved using the W-W algorithm.
 However, a critical part in applying the W-W algorithm is to determine all natural frequencies of the fully clamped structure within the interested frequency range, \textit{a priori}.
@@ -99,7 +99,6 @@ However, these approaches are computationally expensive and complex, posing a si
 To resolve the fully clamped plate problem, Liu and Banerjee \cite{liu2015exact} suggested that the frequencies can be indirectly obtained from the simply supported plate problem, where the Navier solution serves as the analytical solution. 
 This idea provides a significant enhancement to the W-W algorithm, increasing the efficiency of applying DSM methods \cite{liu2024wavenumber,zhou2024wavenumber}. 
 However, most solutions applied in these DSM methods are not explicit and closed-form, but are expressed in an infinite series form, where a sufficient number of truncation terms might be required to ensure accuracy.
-
 
 Inspired by the Navier and Levy solutions, Xing and Liu \cite{xing2009new} proposed the SOV method, which provides concise and explicit eigensolutions.
 The mode shape function has a separable form, $\phi(x) \psi(y)$, requiring only one $\phi(x)$ and one $\psi(y)$ for each mode order, allowing each eigenvalue equation to be explicitly expressed.
@@ -115,7 +114,7 @@ Firstly, the SOV method is further extended to analyze the vibrations of plates 
 This extended SOV solution is then employed to construct dynamic stiffness matrices that accommodate general homogeneous boundary conditions.
 By taking advantage of both the SOV and DSM methods, an enhanced W–W algorithm is developed to solve the eigenvalue problem without directly solving the eigenvalue equations.
 This enhanced approach resolves the challenge of determining fully clamped frequencies, also called the $J_0$ count problem, a well-known limitation in the application of the W-W algorithm. 
-Two types of explicit and closed-form expressions for the $J_0$ term, based on specific supports such as simply supported, guided, or their combinations, are provided to improve the computational efficiency of the eigenvalue problem.
+Two types of explicit and closed-form expressions for the $J_0$ term, based on specific support types such as simply supported, guided, or their combinations, are provided to improve the computational efficiency of the eigenvalue problem.
 In addition, a novel numerical technique is proposed to compute the mode shape coefficients. 
 
 The paper is structured as follows: \Cref{sec:SOV-DSM} presents the SOV-DSM formulations derived from the extended SOV method, which accommodates elastically restrained boundary conditions.
@@ -130,7 +129,7 @@ Finally, the conclusions of this paper are presented in \Cref{sec:coclusion}.
 \section{Separation-of-variable dynamic stiffness matrix formulation}\label{sec:SOV-DSM}
 In this section, the SOV-DSM formulations for the free vibration analysis of orthotropic rectangular thin plates are developed.  
 \Cref{sec:Mathematical model} presents the mathematical model of the extended separation-of-variable method.  
-Then, the SOV-DSM formulations in the $x$- and $y$-directions will be proposed separately in \Cref{sec:DSMx} and \Cref{sec:DSMy}, according to the boundary conditions of the plate.
+Then, the SOV-DSM formulations in the $x$- and $y$-directions are developed separately in \Cref{sec:DSMx} and \Cref{sec:DSMy}, according to the boundary conditions of the plate.
 
 \subsection{Mathematical model for separation-of-variable method}\label{sec:Mathematical model}
 \begin{figure}[!htbp]
@@ -308,7 +307,7 @@ and by substituting \Cref{eq:poten_energy_tolx2,eq:kine_energyx} into \Cref{eq:R
 \end{split}
 \end{equation}
 %
-Thus, the governing differential equation in the $ x $-direction can be obtained from the integration part in \Cref{eq:Rayleighx2}:
+Thus, the governing differential equation in the $ x $-direction can be obtained from the integration part of \Cref{eq:Rayleighx2} as:
 %
 \begin{equation}\label{eq:ODEx}
 \frac{\id^4 \phi}{\id \xi^4}+ 2\chi^2\left(\frac{D_{12}I_2}{D_{11}I_1}-2\frac{D_{66}I_3}{D_{11}I_1}\right)\frac{\id^2 \phi}{\id \xi^2}+\left(\chi^4\frac{D_{22}I_4}{D_{11}I_1}-a^4\Omega_x^4\right)\phi=0,
@@ -352,7 +351,7 @@ The shear force equilibrium can be obtained from the $\delta \phi$ part:
 \end{split}
 \end{equation}
 %
-and from the $\delta \frac{\id \phi}{\id \xi}$ part, the bending moment equilibrium:
+and from the $\delta \frac{\id \phi}{\id \xi}$ part, the bending moment equilibrium is:
 %
 \begin{equation}\label{eq:inertial_forcex2}
 \begin{split}	
@@ -375,7 +374,7 @@ Thus, we can obtain the shear force and bending moment equilibrium along the edg
 	& \frac{\id^2 \phi}{\id \xi^2} + \frac{\chi^2 D_{12} I_2}{D_{11} I_1} \phi + \frac{2a k^r_{\xi=1}}{D_{11}} \frac{\id \phi}{\id \xi} = 0, \quad &\xi = 1.
 \end{align}
 \end{subequations}
-%
+
 Substituting \Cref{eq:phi_solution1} into \Cref{eq:boundaryx}, and denoting 
 $k^{v*}_{\xi} \equiv \frac{2a^3 k^v_{\xi}}{D_{11}} $, 
 $ k^{r*}_{\eta} \equiv \frac{2a k^r_{\xi}}{D_{11}} $, 
@@ -434,7 +433,7 @@ where,
 	&\gamma_4 = \beta_1^2 + \frac{\chi^2 D_{12} I_2}{D_{11} I_1}.
 \end{split}
 \end{equation}
-%
+
 Note that the classic boundary conditions can be obtained by selecting extremely large or small spring stiffness constants.
 For non-trivial solutions, the characteristic equation or eigenvalue equation is obtained from the determinant of the matrix $\mathbf{R}_x$ in \Cref{eq:ABx1}, which must be zero.
 However, solving these transcendental equations is cumbersome and so the DSM is introduced to avoid such a computation.
@@ -493,7 +492,7 @@ from which the governing differntial equation in the $y$-direction for $\psi$ is
 \end{equation}
 %
 where $\Omega_y = \sqrt[4]{{\omega_y^2 \rho h}/D_{11}}$.
-By substituting $\psi(\eta) = B e^{\lambda \eta}$ into \Cref{eq:ODEy}, yields:
+By substituting $\psi(\eta) = B e^{\lambda \eta}$ into \Cref{eq:ODEy}, we get:
 %
 \begin{equation}\label{eq:ODEy2}
 \begin{split}
@@ -517,8 +516,8 @@ where,
 	\beta_2 &= \frac{1}{\chi} \sqrt{ \sqrt{ \left( \frac{D_{12}J_2}{D_{22}J_1} - 2 \frac{D_{66}J_3}{D_{22}J_1} \right)^2 - \frac{D_{11}J_4}{D_{22}J_1} + \frac{a^4 D_{11}}{D_{22}} \Omega_y^4 } - \frac{D_{12}J_2}{D_{22}J_1} + 2 \frac{D_{66}J_3}{D_{22}J_1}}.\label{eq:betay2}
 \end{align}
 \end{subequations}
-%
-Similarly, from the shear force and bending moment equilibrium, and by denoting 
+
+Similarly to the $x$-direction, from the shear force and bending moment equilibrium, and by denoting 
 $k^{v*}_{\eta} \equiv \frac{2b^3 k^v_{\eta}}{D_{22}} $, 
 $ k^{r*}_{\eta} \equiv \frac{2b k^r_{\eta}}{D_{22}} $, 
 $S_{\alpha_2}\equiv\sin\alpha_2  $, 
@@ -563,8 +562,8 @@ where,
 	&\zeta_4=\beta_2^2+\frac{D_{12}J_2}{\chi^2D_{22}J_1}.
 \end{split}
 \end{equation}
-%
-With the help of \Cref{eq:phi_solution2}, the vertical displacement and rotation corresponding to the mode shape $\psi$ along the $y$-direction at the edges $\eta = -1$ and $\eta = 1$ can be expressed as:
+
+With the help of \Cref{eq:phi_solution2}, the vertical displacement and rotation corresponding to the mode shape $\psi$ along the $y$-direction at the edges $\eta = -1$ and $\eta = 1$ can then be expressed as:
 %
 \begin{equation}\label{eq:UBy}
 \begin{split}
@@ -597,8 +596,9 @@ Solving for the eigenvector $\mathbf{B}$, and then substituting into \Cref{eq:AB
 \end{equation}
 %
 where the dynamic stiffness matrix, denoted as $\mathbf{K}_y = \mathbf{R}_y \mathbf{Q}_y^{-1}$, can be obtained from \Cref{eq:DSM_eqy}.
-\section*{Remarks}
-\addcontentsline{toc}{subsection}{Remarks}
+
+\subsection{Remarks}
+% \addcontentsline{toc}{subsection}{Remarks}
 \begin{enumerate}[label=(\roman*)]
 	\item For the SOV methods, six independent unknown eigenvalues ($\alpha_1$, $\beta_1$, $\Omega_x$, $\alpha_2$, $\beta_2$, $\Omega_y$) need to be determined for each mode shape $\phi(\xi)\psi(\eta)$.  
 	To solve these six variables, four eigenvalue equations are provided in \Cref{eq:alphax1,eq:alphax2,eq:betay1,eq:betay2}, while the remaining two transcendental eigenvalue equations are obtained from the determinants of $\mathbf{R}_x$ in \Cref{eq:ABx1} for the $x$-direction and $\mathbf{R}_y$ in \Cref{eq:ABy1} for the $y$-direction, respectively.
@@ -744,7 +744,7 @@ The procedure can be controlled by the error tolerance \( \epsilon \) or maximum
 %
 Note that the mode shape coefficients $A_1$ to $A_4$ obtained from $\mathbf{A}^{(i+1)}$ are applied for the elastically restrained boundary conditions.
 
-\subsection{Application procedure}\label{sec:Application procedure}
+\subsection{Numerical procedure}\label{sec:Application procedure}
 The procedure of the proposed method is as follows:   
 \begin{itemize}[]
 \item \textbf{Step 1} Assume initial integral parameters $I^{(0)}_1, I^{(0)}_2, I^{(0)}_3$, and $I^{(0)}_4$ in the $y$-direction. Using the given boundary conditions at $\xi = -1$ and $\xi = 1$, determine $\mathbf{K}^{(0)}_x$ from \Cref{eq:DSM_eqx}. 
@@ -762,8 +762,8 @@ Apply the computational algorithms to obtain the $n_y$-th frequency parameter $2
 \item \textbf{Step 6} Finally, construct the $(n_x, n_y)$-th mode shape as $w(\xi, \eta) = \phi_{n_x}(\xi) \psi_{n_y}(\eta)$ using \Cref{eq:displace_func}.  
 \end{itemize}
 
-\section*{Remarks}
-\addcontentsline{toc}{subsection}{Remarks}
+\subsection{Remarks}
+% \addcontentsline{toc}{subsection}{Remarks}
 \begin{enumerate}[label=(\roman*)]
 	\item The traditional W–W algorithm requires a prior expression of $J_0(p_1)$ under the C–C boundary conditions ($p_1$).  
 	However, the transcendental eigenvalue equation for C–C boundaries is complex, making it difficult to obtain a closed-form solution for the $J_0(p_1)$ term.  
@@ -1202,7 +1202,7 @@ Thus, the frequency $\Omega$ can be obtained by solving $\mathbf{K}$ using this 
 
 \FloatBarrier
 \section{Conclusion}\label{sec:coclusion}
-In this study, a separation-of-variables dynamic stiffness matrix (SOV-DSM) method has been developed for the vibration analysis of orthotropic rectangular plates with general homogeneous boundary conditions. 
+In this study, a separation-of-variables dynamic stiffness matrix method (SOV-DSM) has been developed for the vibration analysis of orthotropic rectangular plates with general homogeneous boundary conditions. 
 The boundary conditions of the SOV-type plate are extended to homogeneous elastically restrained boundaries beyond the classical cases, resulting in two more complex eigenvalue equations. 
 Existing SOV methods face the challenge of solving six unknown variables ($\alpha_1$, $\beta_1$, $\Omega_x$, $\alpha_2$, $\beta_2$, $\Omega_y$) through six eigenvalue equations, which leads to high computational cost and convergence difficulties. 
 To address this, dynamic stiffness matrices are formulated based on the SOV-type plate, and an enhanced Wittrick–Williams (W–W) algorithm is introduced to solve these matrices regardless of the complexity of the highly nonlinear eigenvalue equations derived from them. 
