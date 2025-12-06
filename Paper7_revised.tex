@@ -44,6 +44,7 @@
 \newcommand{\uI}{~\unit{\kilogram\square\metre}\xspace}
 \newcommand{\urd}{~\unit{\newton\square\metre}\xspace}
 \newcommand{\ustif}{~\unit{\newton\per\metre}\xspace}
+\newcommand{\ustifrot}{~\unit{\newton\metre\per\radian}\xspace}
 \newcommand{\udamp}{~\unit{\newton\second\per\metre}\xspace}
 \newcommand{\DAF}{\textnormal{DAF}}
 %\newcommand{\ii}{\textnormal{i}}
@@ -56,7 +57,7 @@
 \begin{document}
 \onehalfspacing  % enable 1.5× spacing
 \begin{frontmatter}
-\title{A separation-of-variable dynamic stiffness matrix method for the free vibration of orthotropic rectangular thin plates}
+\title{A separation-of-variable dynamic stiffness method for the free vibration of thin orthotropic rectangular plates with general homogeneous boundary conditions}
 \author[1]{Shiyi Mei}\ead{shiyi.mei1@monash.edu}
 \author[1]{Colin Caprani\corref{cor1}}\ead{colin.caprani@monash.edu}
 \author[2]{Daniel Cantero}\ead{daniel.cantero@ntnu.no}
@@ -64,7 +65,7 @@
 \affiliation[1]{organization={Department of Civil Engineering, Monash University},city={Melbourne},state={Victoria},country={Australia}}
 \affiliation[2]{organization={Department of Structural Engineering, Norwegian University of Science \& Technology NTNU},city={Trondheim}, country={Norway}}
 \begin{abstract}
-	A separation-of-variable dynamic stiffness matrix method (SOV-DSM) is proposed for the free vibration analysis of an orthotropic rectangular thin plate with general homogeneous boundary conditions.  
+	A separation-of-variable dynamic stiffness method (SOV-DSM) is proposed for the free vibration analysis of an thin orthotropic rectangular plate with general homogeneous boundary conditions.  
 	Firstly, the exact SOV solution satisfying Rayleigh’s principle is extended to handle arbitrary boundary conditions and then applied to develop closed-form dynamic stiffness formulations.
 	Then, an enhanced Wittrick–Williams (W-W) algorithm is used to solve the eigenvalue problem rather than solving the highly nonlinear eigenvalue equations.
 	The $J_0$ count problem involved in applying the W-W algorithm is addressed by providing an explicit and closed-form expression for the $J_0$ term based on the characteristics of the SOV solution.
@@ -81,7 +82,7 @@ To solve problems with other boundary conditions, approximate solutions such as 
 For most approximation methods, beam functions \cite{ding1996natural,cheung1999free,cheung1999free2,zhou2002vibrations}, polynomials \cite{bhat1985natural,xie2025efficient,celep2025elastic,madinier2025spatial,sun2023spectral}, trigonometric functions \cite{filipich2000arbitrary,kumar2004buckling,yessenbayeva2019calculation,he2021study,su2022vibration}, and their combinations \cite{li2004vibration,cheung2000vibrations,zhou2001vibrations,monterrubio2015proof,onyeka2022application} are commonly used as the assumed approximate functions.
 The accuracy of these solutions depends on how well the assumed approximate functions represent the displacement of the plate.
 
-Besides the approximation methods, several analytical methods have been developed over past decades, including the Kantorovich-Krylov method \cite{kantorovich1958approximate,kerr1968extension,kerr1968application,rostami2016free,huang2015interlaminar,shufrin2016semi,singh2020three}, the symplectic method \cite{zhong1995new,xing2009new2,lim2009new,shi2024symplectic,xu2024hamiltonian,shi2025free}, the separation-of-variable (SOV) method \cite{xing2009new,xing2009new2,xing2018overall,xing2020extended,xing2020improved,xing2022review,wang2021closed,wang2021extended,wang2019highly,wang2020highly}, the dynamic stiffness matrix (DSM) method \cite{banerjee1997dynamic,papkov2019dynamic,liu2024dynamic,boscolo2011dynamic,fazzolari2013exact,ghorbel2015dynamic,williams1995wave,banerjee2015dynamic,liu2016free,liu2024wavenumber,zhou2024wavenumber,liu2015exact}, and series expansion-based methods \cite{timoshenko1940theory,gorman2005free,mochida2010transient,wang2016symplectic,hu2021new,wang2025new,khov2009accurate,li2009exact,grigorenko2003discrete,wang2016improved,leng2022new,li2009finite,zhong2013free,tian2015integral,zhang2017bending,chen2023analytical,li2024novel,zhu2024sound,shao2025analytic}.
+Besides the approximate methods, several analytical methods have been developed over past decades, including the Kantorovich-Krylov method \cite{kantorovich1958approximate,kerr1968extension,kerr1968application,rostami2016free,huang2015interlaminar,shufrin2016semi,singh2020three}, the symplectic method \cite{zhong1995new,xing2009new2,lim2009new,shi2024symplectic,xu2024hamiltonian,shi2025free}, the separation-of-variable (SOV) method \cite{xing2009new,xing2009new2,xing2018overall,xing2020extended,xing2020improved,xing2022review,wang2021closed,wang2021extended,wang2019highly,wang2020highly}, the dynamic stiffness (DSM) method \cite{banerjee1997dynamic,papkov2019dynamic,liu2024dynamic,boscolo2011dynamic,fazzolari2013exact,ghorbel2015dynamic,williams1995wave,banerjee2015dynamic,liu2016free,liu2024wavenumber,zhou2024wavenumber,liu2015exact}, and series expansion-based methods \cite{timoshenko1940theory,gorman2005free,mochida2010transient,wang2016symplectic,hu2021new,wang2025new,khov2009accurate,li2009exact,grigorenko2003discrete,wang2016improved,leng2022new,li2009finite,zhong2013free,tian2015integral,zhang2017bending,chen2023analytical,li2024novel,zhu2024sound,shao2025analytic}.
 The series expansion-based methods include the superposition method \cite{timoshenko1940theory,gorman2005free,mochida2010transient,wang2016symplectic,hu2021new,wang2025new}, Fourier series method \cite{khov2009accurate,li2009exact,grigorenko2003discrete,wang2016improved,leng2022new}, the finite integral transform method \cite{li2009finite,zhong2013free,tian2015integral,zhang2017bending,chen2023analytical}, and other series methods \cite{li2024novel,zhu2024sound,shao2025analytic}. 
 These methods represent the plate displacement in terms of an infinite series and mostly are capable of handling any general boundary conditions. 
 However, sufficient truncation of the series is required to ensure the accuracy and convergence of the results, and the eigenvalue equation is generally difficult to express explicitly.
@@ -89,7 +90,9 @@ Therefore, solving the corresponding eigenvalue problem can be computationally e
 
 Despite being a powerful method for the dynamic analysis of plate assemblies, the FEM requires a sufficient number of elements and is computationally expensive to accurately capture higher-order modes.
 Thus, the DSM method was developed as an accurate and efficient analytical approach to alternatively solve complex plate structures \cite{boscolo2011dynamic,fazzolari2013exact}. 
-The DSM can be considered as an analytical FEM since the mode functions of the plate are expressed by analytical solutions, where Levy-type solution \cite{ghorbel2015dynamic} or components of Fourier series \cite{williams1995wave,banerjee2015dynamic,liu2016free,liu2024wavenumber,zhou2024wavenumber} are applied.
+The DSM can be considered an analytical FEM since the mode functions of the plate are expressed through analytical solutions, typically using Levy-type formulations \cite{ghorbel2015dynamic} or components of Fourier series \cite{williams1995wave,banerjee2015dynamic,liu2016free,liu2024wavenumber,zhou2024wavenumber}.
+Recently, the DSM formulation using higher-order theories has been proposed to study the free vibration of composite beams and laminated reinforced panels \cite{liu2024dynamic,liu2024free}.
+The higher-order displacement fields based on the Carrera Unified Formulation (CUF) provide a generalised polynomial-expansion framework \cite{carrera2024carrera}, enabling the use of Taylor \cite{pagani2014free}, Lagrange \cite{carrera2012refined}, Chebyshev \cite{filippi2015static}, and hierarchical Legendre polynomials \cite{carrera2017hierarchical} for beams, plates, and shells.
 To avoid solving the cumbersome transcendental frequency equation directly, the Wittrick-Williams (W-W) algorithm \cite{wittrick1971general} can be applied to the eigenvalue problem.
 The W-W algorithm determines the lower and upper bounds of natural frequencies to arbitrary precision rather than solving the frequency equation directly. 
 Thus, the DSM has the potential to be effectively and systematically solved using the W-W algorithm.
@@ -108,7 +111,7 @@ Based on the Rayleigh quotient model, alternative iterative and improved SOV met
 Although SOV methods provide concise closed-form analytical solutions, they require solving a specific set of highly nonlinear eigenvalue equations for each type of boundary condition.
 However, even when considering only the four classic homogeneous cases, it becomes evident that 55 different boundary condition combinations exist for a rectangular plate, making the process tedious.
 
-In this study, a separation-of-variable dynamic stiffness matrix (SOV-DSM) method is proposed to avoid solving transcendental eigenvalue equations in SOV methods.
+In this study, a separation-of-variable dynamic stiffness (SOV-DSM) method is proposed to avoid solving transcendental eigenvalue equations in SOV methods.
 It also fills the gap caused by the limitation of closed-form dynamic stiffness formulations available for existing plate structures.
 Firstly, the SOV method is further extended to analyze the vibrations of plates with elastically restrained edges based on Rayleigh’s principle. 
 This extended SOV solution is then employed to construct dynamic stiffness matrices that accommodate general homogeneous boundary conditions.
@@ -128,10 +131,11 @@ Finally, the conclusions of this paper are presented in \Cref{sec:coclusion}.
 \FloatBarrier
 \section{Separation-of-variable dynamic stiffness matrix formulation}\label{sec:SOV-DSM}
 In this section, the SOV-DSM formulations for the free vibration analysis of orthotropic rectangular thin plates are developed.  
-\Cref{sec:Mathematical model} presents the mathematical model of the extended separation-of-variable method.  
-Then, the SOV-DSM formulations in the $x$- and $y$-directions are developed separately in \Cref{sec:DSMx} and \Cref{sec:DSMy}, according to the boundary conditions of the plate.
+\Cref{sec:Mathematical model} introduces the governing equation used in the traditional SOV method.
+\Cref{sec:esovmodel} presents the mathematical model of the extended SOV method.  
+Then, the SOV-DSM formulations based on the extended SOV method in the $x$- and $y$-directions are developed separately in \Cref{sec:DSMx} and \Cref{sec:DSMy}, according to the boundary conditions of the plate.
 
-\subsection{Mathematical model for separation-of-variable method}\label{sec:Mathematical model}
+\subsection{Governing equation for traditional separation-of-variable method}\label{sec:Mathematical model}
 \begin{figure}[!htbp]
 \centering
 \resizebox{0.8\textwidth}{!}
@@ -141,27 +145,33 @@ Then, the SOV-DSM formulations in the $x$- and $y$-directions are developed sepa
 \caption{\small The orthotropic rectangular plate with all edges elastically restrained.} 
 \label{fig:platemode}
 \end{figure}
-Consider a thin orthotropic rectangular plate of length $2a$ and width $2b$, with all four edges restrained by vertical translational springs $k^v$ and rotational springs $k^r$, as shown in \Cref{fig:platemode}. 
+Consider a thin orthotropic rectangular plate of length $2a$ and width $2b$, with all four edges restrained by vertical translational springs $k^{v}_{\xi}$ and $k^{v}_{\eta}$, and rotational springs $k^{r}_{\xi}$ and $k^{r}_{\eta}$, as shown in \Cref{fig:platemode}.
 The coordinate origin is located at the center of the plate.
 
-The governing differential equation for the free vibration of a thin orthotropic plate is given by \citep{xing2020improved}:  
+In the traditional SOV method, the strong-form governing differential equation for the free vibration of a thin orthotropic plate is given by \citep{xing2020improved}: 
 %
 \begin{equation}\label{eq:governing_EOM}
-D_{11}\frac{\partial^4w}{\partial \xi^4} + 2D_3\chi^2\frac{\partial^4w}{\partial \xi^2 \partial \eta^2} + D_{22}\chi^4\frac{\partial^4w}{\partial \eta^4} = \rho ha^4\omega^2w,
+D_{11}\frac{\partial^4W}{\partial \xi^4} + 2D_3\chi^2\frac{\partial^4W}{\partial \xi^2 \partial \eta^2} + D_{22}\chi^4\frac{\partial^4W}{\partial \eta^4} = \rho ha^4\omega^2W,
 \end{equation}
 %
-where $ \chi = a / b $ is the aspect ratio; $ \xi = x / a $ and $ \eta = y / b $ are the normalized coordinates, and the bending stiffness parameters are defined as:
+where $W(\xi,\eta)$ is the mode shape function; $ \chi = a / b $ is the aspect ratio; $ \xi = x / a $ and $ \eta = y / b $ are the normalized coordinates, and the bending stiffness parameters are defined as:
 %
 \begin{equation}\label{eq:bd_stiff}
 \begin{split}
-	&D_{11} = \frac{E_1h^3}{12(1-v_{12}v_{21})}, \qquad D_{22} = \frac{E_2h^3}{12(1-v_{12}v_{21})}, \\  
-	&D_{66} = \frac{G_{12}h^3}{12}, \quad D_{12} = v_{12}D_{22} = v_{21}D_{11}, \quad D_3 = D_{12} + 2D_{66},
+	&D_{11} = \frac{E_1h^3}{12(1-\nu_{12}\nu_{21})}, \qquad D_{22} = \frac{E_2h^3}{12(1-\nu_{12}\nu_{21})}, \\  
+	&D_{66} = \frac{G_{12}h^3}{12}, \quad D_{12} = \nu_{12}D_{22} = \nu_{21}D_{11}, \quad D_3 = D_{12} + 2D_{66},
 \end{split}
 \end{equation}
 %
-where $\rho$ and $h$ denote the mass density and thickness of the plate, respectively; $E_1$ and $E_2$ are the Young’s moduli in the $x$- and $y$-directions, respectively; $G_{12}$ is the shear modulus, and $v_{12}$ and $v_{21}$ are the Poisson’s ratios.
+where $\rho$ and $h$ denote the mass density and thickness of the plate, respectively; $E_1$ and $E_2$ are the Young’s moduli in the $x$- and $y$-directions, respectively; $G_{12}$ is the shear modulus, and $\nu_{12}$ and $\nu_{21}$ are the Poisson’s ratios.
 
-Instead of solving the free vibration of the thin orthotropic plate using \Cref{eq:governing_EOM}, it is suggested that the vibration of the thin plate can also be solved using the Rayleigh quotient variational principle \cite{xing2018overall}:
+The traditional SOV method is based on the strong-form governing equation in \Cref{eq:governing_EOM}, and the details are not given here; more information can be found in \cite{xing2009new}. 
+However, the traditional SOV method cannot deal with free boundary conditions, thus the extended SOV method is proposed.
+
+
+\subsection{Mathematical model for extended separation-of-variable method}\label{sec:esovmodel}
+
+Instead of solving the free vibration problem of the thin orthotropic plate using the strong-form governing equation in \Cref{eq:governing_EOM}, the extended SOV method suggests that the vibration characteristics can alternatively be obtained through the Rayleigh quotient variational principle \cite{xing2018overall}, which is also the formulation adopted in the present paper:
 %
 \begin{equation}\label{eq:Rayleigh}
 \begin{split}
@@ -170,12 +180,16 @@ Instead of solving the free vibration of the thin orthotropic plate using \Cref{
 \end{equation}
 %
 where $\delta$ denotes variation, $U$ is the magnitude of the potential energy of the plate, and $T$ represents the magnitude of the kinetic energy of the plate.
+It should be noted that the formulation of Rayleigh’s principle used here focuses only on undamped vibration, and the dissipation energy is therefore ignored in this study.
+The dissipation energy arising from internal damping \cite{du2025novel} within the plate could contribute to the governing differential equations of the plate,
+while the effects of external damping \cite{svedholm2016vibration} could contribute to the transcendental equations corresponding to the boundary conditions.
+The application of such damping mechanisms is beyond the scope of the present study, but provides a meaningful direction for future research.
 The potential energy of the plate can be expressed as \cite{xing2020extended}:
 %
 \begin{equation}\label{eq:poten_energy}
 \begin{split}
-	U^{I} &= \frac{1}{2}\iint \Bigg[D_{11}\left(\frac{\partial^2 W}{\partial x^2}\right)^2 + 2D_{12}\frac{\partial^2 W}{\partial x^2}\frac{\partial^2 W}{\partial y^2} + D_{22}\left(\frac{\partial^2 W}{\partial y^2}\right)^2 \\
-	&\qquad + 4D_{66}\left(\frac{\partial^2 W}{\partial x \partial y}\right)^2\Bigg] \, \mathrm{d}x \, \mathrm{d}y.
+	U^{I} &= \frac{1}{2}\iint \Bigg[D_{11}\left(\frac{\partial^2 w}{\partial x^2}\right)^2 + 2D_{12}\frac{\partial^2 w}{\partial x^2}\frac{\partial^2 w}{\partial y^2} + D_{22}\left(\frac{\partial^2 w}{\partial y^2}\right)^2 \\
+	&\qquad + 4D_{66}\left(\frac{\partial^2 w}{\partial x \partial y}\right)^2\Bigg] \, \mathrm{d}x \, \mathrm{d}y.
 \end{split}
 \end{equation}
 %
@@ -183,18 +197,18 @@ And the kinetic energy is:
 %
 \begin{equation}\label{eq:kine_energy}
 \begin{split}
-	T &= \frac{1}{2}\iint \rho h \left(\frac{\partial W}{\partial t}\right)^2 \, \mathrm{d}x \, \mathrm{d}y.
+	T &= \frac{1}{2}\iint \rho h \left(\frac{\partial w}{\partial t}\right)^2 \, \mathrm{d}x \, \mathrm{d}y.
 \end{split}
 \end{equation}
 
-Assuming the solution of the deflection $ W(x, y; t) = w(x, y) e^{i \omega t} $ for harmonic plate motion, 
-where $ \ii = \sqrt{-1} $, $ w(x, y) $ is the mode shape, and $ \omega $ is the radial frequency.  
-By substituting $ W(x, y; t) = w(x, y) e^{i \omega t} $ into \Cref{eq:poten_energy,eq:kine_energy} and expressing the system in dimensionless coordinates, we have:
+Assuming the solution of the deflection $ w(x, y; t) = W(x, y) e^{i \omega t} $ for harmonic plate motion, 
+where $ \ii = \sqrt{-1} $, $ W(x, y) $ is the mode shape, and $ \omega $ is the radial frequency.  
+By substituting $ w(x, y; t) = W(x, y) e^{i \omega t} $ into \Cref{eq:poten_energy,eq:kine_energy} and expressing the system in dimensionless coordinates, we have:
 %
 \begin{equation}\label{eq:poten_energy_mag}
 \begin{split}
-	U^{I} &= \frac{ab}{2} \iint \left[ \frac{D_{11}}{a^4} \left( \frac{\partial^2 w}{\partial \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2} \frac{\partial^2 w}{\partial \xi^2} \frac{\partial^2 w}{\partial \eta^2} + \frac{D_{22}}{b^4} \left( \frac{\partial^2 w}{\partial \eta^2} \right)^2 \right. \\
-	&\quad \left. + \frac{4 D_{66}}{a^2 b^2} \left( \frac{\partial^2 w}{\partial \xi \partial \eta} \right)^2 \right] \, \mathrm{d} \xi \, \mathrm{d} \eta,
+	U^{I} &= \frac{ab}{2} \iint \left[ \frac{D_{11}}{a^4} \left( \frac{\partial^2 W}{\partial \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2} \frac{\partial^2 W}{\partial \xi^2} \frac{\partial^2 W}{\partial \eta^2} + \frac{D_{22}}{b^4} \left( \frac{\partial^2 W}{\partial \eta^2} \right)^2 \right. \\
+	&\quad \left. + \frac{4 D_{66}}{a^2 b^2} \left( \frac{\partial^2 W}{\partial \xi \partial \eta} \right)^2 \right] \, \mathrm{d} \xi \, \mathrm{d} \eta,
 \end{split}
 \end{equation}
 %
@@ -202,7 +216,7 @@ and
 %
 \begin{equation}\label{eq:kine_energy_mag}
 \begin{split}
-	T &= \omega^2 \frac{ab}{2} \rho h \iint w^2 \, \mathrm{d} \xi \, \mathrm{d} \eta=\omega^2T_0
+	T &= \omega^2 \frac{ab}{2} \rho h \iint W^2 \, \mathrm{d} \xi \, \mathrm{d} \eta=\omega^2T_0
 \end{split},
 \end{equation}
 %
@@ -211,7 +225,7 @@ where, $T_0$ is defined as the coefficient of the kinetic energy.
 The separable form of the mode shape function $ w(\xi, \eta)$ is given by:
 %
 \begin{equation}\label{eq:displace_func}
-w(\xi, \eta) = \phi(\xi) \psi(\eta),
+W(\xi, \eta) = \phi(\xi) \psi(\eta),
 \end{equation}
 %
 where $ \phi(\xi) $ and $\psi(\eta) $ can be expressed as:
@@ -222,8 +236,10 @@ where $ \phi(\xi) $ and $\psi(\eta) $ can be expressed as:
 \end{align}
 \end{subequations}
 
-Based on \Cref{eq:Rayleigh}, the frequencies $\omega_x$ and $\omega_y$, corresponding to the mode shapes $\phi(\xi)$ and $\psi(\eta)$, respectively, are assumed to be independent of each other.
-This is a common and important assumption in SOV methods, and $\omega_x$ and $\omega_y$ can be different in a mathematical sense \cite{xing2020extended}.
+In the extended SOV method, by assuming the mode shape $\psi(\eta)$ corresponding to the $y$-direction is known, then we can get the governing differential equation from Rayleigh principle \Cref{eq:Rayleigh} in the $x$-direction with the corresponding frequency $\omega_x$, and in this case the Rayleigh principle is written in the form in \Cref{eq:Rayleighx}. 
+Similarly, by assuming the mode shape $\phi(\xi)$ is known, we can get another governing differential equation from \Cref{eq:Rayleigh} in the $y$-direction with the corresponding frequency $\omega_y$, and in this case the Rayleigh principle is written in the form in \Cref{eq:Rayleighy}. 
+It should be noted that $\omega_x$ and $\omega_y$ are assumed to be independent of each other and can be different in a mathematical sense in the extended SOV method \citep{xing2020extended}. 
+The SOV formulation used in the present work bases on this extended SOV method, and more details of the derivation will be given in the following.
 
 \subsection{Dynamic stiffness matrix corresponding to $\omega_x$}\label{sec:DSMx}
 For given general homogeneous boundary conditions, we can first assume that the mode shape $\psi(\eta)$ corresponding to the $y$-direction is known. 
@@ -233,8 +249,8 @@ Thus, the potential energy along the supported edge in the $x$-direction can be 
 %
 \begin{equation}\label{eq:poten_energy_edgex}
 \begin{split}
-	U^{x} &=  \int\left[k^r_{\xi=-1} \left( \frac{\partial W}{\partial x} \right)^2 + k^v_{\xi=-1} \left( W \right)^2\right]_{x=-a} \id y\\
-	&\qquad +  \int\left[k^r_{\xi=1} \left( \frac{\partial W}{\partial x} \right)^2 + k^v_{\xi=1} \left( W \right)^2\right]_{x=a} \id y.
+	U^{x} &=  \int\left[k^r_{\xi=-1} \left( \frac{\partial w}{\partial x} \right)^2 + k^v_{\xi=-1} \left( w \right)^2\right]_{x=-a} \id y\\
+	&\qquad +  \int\left[k^r_{\xi=1} \left( \frac{\partial w}{\partial x} \right)^2 + k^v_{\xi=1} \left( w \right)^2\right]_{x=a} \id y.
 \end{split}
 \end{equation}
 %
@@ -243,8 +259,8 @@ From \Cref{eq:poten_energy_edgex}, the magnitude of potential energy along the p
 %
 \begin{equation}\label{eq:poten_energy_edgex2}
 \begin{split}
-	U^{x} &= ab \int\left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=-1}}{a} \left( w \right)^2\right]_{\xi=-1} \, \id \eta \\
-	&\qquad + ab \int\left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( w \right)^2\right]_{\xi=1} \, \id \eta.
+	U^{x} &= ab \int\left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\partial W}{\partial \xi} \right)^2 + \frac{k^v_{\xi=-1}}{a} \left( W \right)^2\right]_{\xi=-1} \, \id \eta \\
+	&\qquad + ab \int\left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial W}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( W \right)^2\right]_{\xi=1} \, \id \eta.
 \end{split}
 \end{equation}
 %
@@ -253,10 +269,10 @@ The magnitude of total potential energy of the plate in the $x$-direction can be
 \begin{equation}\label{eq:poten_energy_tolx}
 \begin{split}
 	U &= U^{I} + U^{x} \\
-	&= \frac{ab}{2} \iint \left[ \frac{D_{11}}{a^4} \left( \frac{\partial^2 w}{\partial \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2} \frac{\partial^2 w}{\partial \xi^2} \frac{\partial^2 w}{\partial \eta^2} + \frac{D_{22}}{b^4} \left( \frac{\partial^2 w}{\partial \eta^2} \right)^2 \right. \\
-	&\qquad \left.  + \frac{4 D_{66}}{a^2 b^2} \left( \frac{\partial^2 w}{\partial \xi \partial \eta} \right)^2 \right] \, \id\xi \, \id\eta \\
-	&\qquad + ab \int \left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( w \right)^2 \right]_{\xi=1} \, \id \eta \\
-	&\qquad + ab \int \left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\partial w}{\partial \xi} \right)^2 + \frac{k^v_{\xi=-1}}{a} \left( w \right)^2 \right]_{\xi=-1} \, \id \eta
+	&= \frac{ab}{2} \iint \left[ \frac{D_{11}}{a^4} \left( \frac{\partial^2 W}{\partial \xi^2} \right)^2 + \frac{2 D_{12}}{a^2 b^2} \frac{\partial^2 W}{\partial \xi^2} \frac{\partial^2 W}{\partial \eta^2} + \frac{D_{22}}{b^4} \left( \frac{\partial^2 W}{\partial \eta^2} \right)^2 \right. \\
+	&\qquad \left.  + \frac{4 D_{66}}{a^2 b^2} \left( \frac{\partial^2 W}{\partial \xi \partial \eta} \right)^2 \right] \, \id\xi \, \id\eta \\
+	&\qquad + ab \int \left[\frac{k^r_{\xi=1}}{a^3} \left( \frac{\partial W}{\partial \xi} \right)^2 + \frac{k^v_{\xi=1}}{a} \left( W \right)^2 \right]_{\xi=1} \, \id \eta \\
+	&\qquad + ab \int \left[\frac{k^r_{\xi=-1}}{a^3} \left( \frac{\partial W}{\partial \xi} \right)^2 + \frac{k^v_{\xi=-1}}{a} \left( W \right)^2 \right]_{\xi=-1} \, \id \eta
 \end{split}
 \end{equation}
 %
@@ -273,11 +289,12 @@ By substituting \Cref{eq:displace_func} into \Cref{eq:poten_energy_tolx}, we hav
 %
 where the integral parameters $I_1$, $I_2$, $I_3$, and $ I_4$ are defined and expressed in \Cref{sec:appendA}.
 
+
 By taking \Cref{eq:displace_func} into account, the coefficient $T_0$ of the kinetic energy from \Cref{eq:kine_energy_mag} for the plate in the $x$-direction can be expressed as:
 %
 \begin{equation}\label{eq:kine_energyx}
 \begin{split}
-	T_0 = \frac{ab}{2}\rho h\iint w^2 \, \id \xi \, \id \eta = \frac{ab}{2}\rho h I_1\int_{-1}^{1} \phi^2 \, \id \xi.
+	T_0 = \frac{ab}{2}\rho h\iint W^2 \, \id \xi \, \id \eta = \frac{ab}{2}\rho h I_1\int_{-1}^{1} \phi^2 \, \id \xi.
 \end{split}
 \end{equation}
 
@@ -460,13 +477,13 @@ To develop the plate's dynamic stiffness matrix, with the help of \Cref{eq:phi_s
 or,
 %
 \begin{equation}\label{eq:UBx1}
-\mathbf{\delta}_x= \mathbf{Q}_x\mathbf{A}.
+\mathbf{\Phi}_x= \mathbf{Q}_x\mathbf{A}.
 \end{equation}
 %
 Solving for the eigenvector $\mathbf{A}$, and then substituting into \Cref{eq:ABx1}, we obtain:
 %
 \begin{equation}\label{eq:DSM_eqx}
-\mathbf{R}_x \mathbf{A}=\mathbf{R}_x\mathbf{Q}_x^{-1}\mathbf{\delta}_x = \mathbf{0}.
+\mathbf{R}_x \mathbf{A}=\mathbf{R}_x\mathbf{Q}_x^{-1}\mathbf{\Phi}_x = \mathbf{0}.
 \end{equation}
 %
 where the dynamic stiffness matrix, denoted as $\mathbf{K}_x = \mathbf{R}_x\mathbf{Q}_x^{-1}$, can be obtained from \Cref{eq:DSM_eqx}. 
@@ -485,13 +502,13 @@ Following the same steps as for the \(x\)-direction, the Rayleigh principle is e
 	\end{split}
 \end{equation}
 %
-from which the governing differntial equation in the $y$-direction for $\psi$ is obatained as:
+from which the governing differential equation in the $y$-direction for $\psi$ is obtained as:
 %
 \begin{equation}\label{eq:ODEy}
 	\frac{\id^4 \psi}{\id \eta^4} + \frac{2}{\chi^2}\left(\frac{D_{12}J_2}{D_{22}J_1} - 2\frac{D_{66}J_3}{D_{22}J_1}\right)\frac{\id^2 \psi}{\id \eta^2} + \left( \frac{D_{11}J_4}{\chi^4D_{22}J_1} - \frac{b^4D_{11}}{D_{22}} \Omega_y^4 \right) \psi = 0,
 \end{equation}
 %
-where $\Omega_y = \sqrt[4]{{\omega_y^2 \rho h}/D_{11}}$.
+where $\Omega_y = \sqrt[4]{{\omega_y^2 \rho h}/D_{11}}$, and the integral parameters $J_1$, $J_2$, $J_3$, and $J_4$ are defined in \Cref{sec:appendA}.
 By substituting $\psi(\eta) = B e^{\lambda \eta}$ into \Cref{eq:ODEy}, we get:
 %
 \begin{equation}\label{eq:ODEy2}
@@ -585,14 +602,14 @@ With the help of \Cref{eq:phi_solution2}, the vertical displacement and rotation
 or,
 %
 \begin{equation}\label{eq:UBy1}
-\mathbf{\delta}_y= \mathbf{Q}_y\mathbf{B}.
+\mathbf{\Psi}_y= \mathbf{Q}_y\mathbf{B}.
 \end{equation}
 %
 Solving for the eigenvector $\mathbf{B}$, and then substituting into \Cref{eq:ABy1}, we obtain:
 %
 \begin{equation}\label{eq:DSM_eqy}
 \mathbf{R}_y\mathbf{B}=\mathbf{R}_y \mathbf{Q}_x^{-1} 
-\mathbf{\delta}_y = \mathbf{0},
+\mathbf{\Psi}_y = \mathbf{0},
 \end{equation}
 %
 where the dynamic stiffness matrix, denoted as $\mathbf{K}_y = \mathbf{R}_y \mathbf{Q}_y^{-1}$, can be obtained from \Cref{eq:DSM_eqy}.
@@ -604,7 +621,7 @@ where the dynamic stiffness matrix, denoted as $\mathbf{K}_y = \mathbf{R}_y \mat
 	To solve these six variables, four eigenvalue equations are provided in \Cref{eq:alphax1,eq:alphax2,eq:betay1,eq:betay2}, while the remaining two transcendental eigenvalue equations are obtained from the determinants of $\mathbf{R}_x$ in \Cref{eq:ABx1} for the $x$-direction and $\mathbf{R}_y$ in \Cref{eq:ABy1} for the $y$-direction, respectively.
 	For classical boundary conditions such as simply supported (S), clamped (C), guided (G), and free (F) edges, these two transcendental equations have been simplified and summarized in previous works \citep{xing2020extended,xing2020improved,xing2022review}.  
 	However, the process of selecting appropriate transcendental equations for the existing 55 different boundary-condition combinations remains tedious, and further simplification becomes challenging when non-classical boundary conditions are applied.
-	By simply setting the translational springs ($k^v$) and rotational springs ($k^r$) along the $x$- or $y$-direction edges to either zero or infinity, the classical boundary conditions can be recovered.  
+	By simply setting the translational springs ($k^{v}_{\xi}$, $k^{v}_{\eta}$) and rotational springs ($k^r_{\xi}$, $k^r_{\eta}$) along the $x$- or $y$-direction edges to either zero or infinity, the classical boundary conditions can be recovered.  
 	In this case, the transcendental equations obtained from the determinants of $\mathbf{R}_x$ and $\mathbf{R}_y$ are identical to those summarized in the existing SOV methods.
 	
 	\item In the existing SOV methods, numerical techniques such as the Newton–Raphson
@@ -665,9 +682,9 @@ With the help of \Cref{eq:alphax1,eq:SSx}, the closed-form solution of the $n_x$
 \begin{equation}\label{eq:J_simpx}
 b \Omega^4_{x,n_x} =
 \begin{aligned}
-	&\left[\left(\frac{n_x\pi}{2\chi}\right)^2 - \frac{D_{12}S_2}{D_{11}S_1} + 2 \frac{D_{66}S_3}{D_{11}S_1}\right]^2 \\
-	&\qquad- \left(\frac{D_{12}S_2}{D_{11}S_1} - 2 \frac{D_{66}S_3}{D_{11}S_1}\right)^2
-	+ \frac{D_{22}S_4}{D_{11}S_1}.
+	&\left[\left(\frac{n_x\pi}{2\chi}\right)^2 - \frac{D_{12}I_2}{D_{11}I_1} + 2 \frac{D_{66}I_3}{D_{11}I_1}\right]^2 \\
+	&\qquad- \left(\frac{D_{12}I_2}{D_{11}I_1} - 2 \frac{D_{66}I_3}{D_{11}I_1}\right)^2
+	+ \frac{D_{22}I_4}{D_{11}I_1}.
 \end{aligned}
 \end{equation}
 %
@@ -678,9 +695,9 @@ Similarly, the closed-form solution of the $n_y$-th S-S boundary conditions freq
 \begin{equation}\label{eq:J_simpy}
 a\Omega^4_{y,n_y}= 
 \begin{aligned}
-	&\frac{D_{22}}{D_{11}}\Biggl\{\left[\left(\frac{n_y\pi\chi}{2}\right)^2 - \frac{D_{12}T_2}{D_{22}T_1} + 2 \frac{D_{66}T_3}{D_{22}T_1}\right]^2 \\ 
-	&\qquad - \left(\frac{D_{12}T_2}{D_{22}T_1} - 2 \frac{D_{66}T_3}{D_{22}T_1}\right)^2
-	+ \frac{D_{11}T_4}{D_{22}T_1}\Biggr\}.
+	&\frac{D_{22}}{D_{11}}\Biggl\{\left[\left(\frac{n_y\pi\chi}{2}\right)^2 - \frac{D_{12}J_2}{D_{22}J_1} + 2 \frac{D_{66}J_3}{D_{22}J_1}\right]^2 \\ 
+	&\qquad - \left(\frac{D_{12}J_2}{D_{22}J_1} - 2 \frac{D_{66}J_3}{D_{22}J_1}\right)^2
+	+ \frac{D_{11}J_4}{D_{22}J_1}\Biggr\}.
 \end{aligned}
 \end{equation}
 %
@@ -759,7 +776,7 @@ Apply the computational algorithms to obtain the $n_y$-th frequency parameter $2
 
 \item \textbf{Step 5} Stop the iteration if $\lvert 2a\Omega^{(i)}_{x,n_x} - 2a\Omega^{(i+1)}_{x,n_x} \rvert \leq \Delta 2a\Omega$ or $\lvert 2a\Omega^{(i)}_{y,n_y} - 2a\Omega^{(i+1)}_{y,n_y} \rvert \leq \Delta 2a\Omega$, where $\Delta 2a\Omega = 2a\Omega_u - 2a\Omega_l$. Here, $2a\Omega_l$ and $2a\Omega_u$ are the lower and upper bounds of the frequency parameter range, within which the actual frequency parameter $2a\Omega$ lies, i.e., $2a\Omega \in (2a\Omega_l, 2a\Omega_u)$. The quantity $\Delta 2a\Omega$ represents the frequency parameter interval used in the W-W algorithm.
 
-\item \textbf{Step 6} Finally, construct the $(n_x, n_y)$-th mode shape as $w(\xi, \eta) = \phi_{n_x}(\xi) \psi_{n_y}(\eta)$ using \Cref{eq:displace_func}.  
+\item \textbf{Step 6} Finally, construct the $(n_x, n_y)$-th mode shape as $W(\xi, \eta) = \phi_{n_x}(\xi) \psi_{n_y}(\eta)$ using \Cref{eq:displace_func}.  
 \end{itemize}
 
 \subsection{Remarks}
@@ -772,7 +789,7 @@ Apply the computational algorithms to obtain the $n_y$-th frequency parameter $2
 	Consequently, to apply the W–W algorithm, at least one prior solution for a specific boundary condition is required.  	
 	Thanks to the SOV solution, the S–S, G–G, and S–G boundary conditions yield the simplest eigenvalue equations, involving only a single sine or cosine function.  
 	Therefore, an explicit closed-form expression of $J(\bar{p}_1)$ can be readily obtained when $\bar{p}_1$ corresponds to one of these boundary conditions.  	
-	In numerical calculations, to approximate infinite stiffness, the translational springs ($k^v$) and rotational springs ($k^r$) are assigned sufficiently large values.
+	In numerical calculations, to approximate infinite stiffness, the translational springs ($k^{v}_{\xi}$,$k^{v}_{\eta}$) and rotational springs ($k^{r}_{\xi}$,$k^{r}_{\eta}$) are assigned sufficiently large values.
 	
 	\item In the existing SOV methods, the mode shape coefficients $A_1$ to $A_4$ and $B_1$ to $B_4$ are obtained from different types of transcendental eigenvalue equations for each boundary condition, resulting in distinct expressions for different boundary conditions.  
 	However, the dynamic stiffness matrix $\mathbf{K}$ is applicable to all boundary conditions.  
@@ -801,73 +818,74 @@ In this subsection, the proposed method is validated by comparison with the exte
 The properties of the orthotropic plate, consistent with those in \cite{xing2020extended}, are as follows:  
 $E_1 = 185 \nugpa$, $E_2 = 10.5 \nugpa$, $G_{12} = 7.3 \nugpa$, $\rho = 1600 \urho$, and $\nu_{12} = 0.28$.
 
-The translational springs ($k^v$) and rotational springs ($k^r$) along all edges can be set to zero or infinity (represented as $1 \times 10^{15} \ustif$ in the numerical calculations of this study) to obtain different classic boundary conditions.  
+The translational springs ($k^{v}_{\xi}$,$k^{v}_{\eta}$) and rotational springs ($k^{r}_{\xi}$,$k^{r}_{\eta}$) along all edges can be set to zero or to numerical infinity to realise the classical boundary conditions. 
+In the numerical calculations, the values $(2a)^{3} k^{v}_{\xi} / D_{11} = 10^{5}$ and $2a\, k^{r}_{\xi} / D_{11} = 10^{5}$ were found to be sufficiently large to simulate infinite stiffness, and further increases in these values did not change the computed results. 
+Accordingly, $k^{v}_{\xi}=k^{v}_{\eta} = 1\times 10^{11}\,\ustif$ and $k^{r}_{\xi}=k^{r}_{\eta} = 1\times 10^{11}\,\ustifrot$ are adopted in this study.
 
 The results for SSSS, SCSF, GCGC, CCCC, SSCC, SCCC, GGCC, CCFF, CFCF, CFFF, and FFFF boundary conditions are presented in \Cref{tab:sov1,tab:sov2,tab:sov3}. 
-These results demonstrate high accuracy compared to the extended SOV method, with difference remaining smaller than the frequency parameter interval $2a\Delta\Omega=0.005$. 
+The results show high accuracy with respect to both the extended SOV method and the FEM solutions. 
+The SOV-DSM results align more closely with the extended SOV results, with differences remaining below the frequency-parameter interval $2a\Delta\Omega = 0.005$. 
+This is expected, since both methods use the same SOV-type mode shape functions.
 The frequency parameters in both directions are equal ($2a\Omega_x - 2a\Omega_y = 0$) in almost all cases, with a few exceptions where $2a\Omega_x - 2a\Omega_y = 0.005$. 
 In fact, higher accuracy compared to the extended SOV method can be achieved if the frequency parameter interval $2a\Delta\Omega$ is set smaller than 0.005. It should be noted that the accuracy improves only by reducing $2a\Delta\Omega$, and no additional iterations are required according to our calculations.
 \Cref{fig:FFFF} shows the first six nonzero mode shapes of a square orthotropic plate with FFFF boundary conditions, where the mode shape coefficients are calculated using the numerical method developed in this study. 
 Instead of selecting fixed expressions for the mode shape coefficients based on specific boundary conditions, our method is applicable to all boundary conditions.
 
-\begin{figure}[p] % or [H]
+\begin{figure}[p]
 	\centering
-	\resizebox{0.85\textwidth}{!}{%
-		\begin{minipage}{\textwidth}
-		\begin{subfigure}[t]{0.48\textwidth}
-			\begin{overpic}[width=\textwidth]{figs/FFFF1.png}
-				\put(-5,103){\normalsize (a)}
-			\end{overpic}
-			\label{fig:FFFF1}
-		\end{subfigure}\hfill
-		\begin{subfigure}[t]{0.48\textwidth}
-			\begin{overpic}[width=\textwidth]{figs/FFFF2.png}
-				\put(-5,103){\normalsize (b)}
-			\end{overpic}
-			\label{fig:FFFF2}
-		\end{subfigure}
-		
-		\vspace{0.4em}
-		
-		% Row 2
-		\begin{subfigure}[t]{0.48\textwidth}
-			\begin{overpic}[width=\textwidth]{figs/FFFF3.png}
-				\put(-5,103){\normalsize (c)}
-			\end{overpic}
-			\label{fig:FFFF3}
-		\end{subfigure}\hfill
-		\begin{subfigure}[t]{0.48\textwidth}
-			\begin{overpic}[width=\textwidth]{figs/FFFF4.png}
-				\put(-5,103){\normalsize (d)}
-			\end{overpic}
-			\label{fig:FFFF4}
-		\end{subfigure}
-		
-		\vspace{0.4em}
-		
-		% Row 3
-		\begin{subfigure}[t]{0.48\textwidth}
-			\begin{overpic}[width=\textwidth]{figs/FFFF5.png}
-				\put(-5,103){\normalsize (e)}
-			\end{overpic}
-			\label{fig:FFFF5}
-		\end{subfigure}\hfill
-		\begin{subfigure}[t]{0.48\textwidth}
-			\begin{overpic}[width=\textwidth]{figs/FFFF6.png}
-				\put(-5,103){\normalsize (f)}
-			\end{overpic}
-			\label{fig:FFFF6}
-		\end{subfigure}
-		
-		\caption{\small%
-			The first six nonzero mode shapes of a square orthotropic plate with FFFF boundary conditions: 
-			(a) the first mode; (b) the second mode; (c) the third mode; 
-			(d) the fourth mode; (e) the fifth mode; (f) the sixth mode.}	
-		\end{minipage}
-	}
+	
+	% Row 1
+	\begin{subfigure}[t]{0.49\textwidth}
+		\begin{overpic}[width=\textwidth]{figs/FFFF1.png}
+			\put(0,82){\normalsize (a)}
+		\end{overpic}
+		\label{fig:FFFF1}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\begin{overpic}[width=\textwidth]{figs/FFFF2.png}
+			\put(0,82){\normalsize (b)}
+		\end{overpic}
+		\label{fig:FFFF2}
+	\end{subfigure}
+	
+	\vspace{0.6em}
+	
+	% Row 2
+	\begin{subfigure}[t]{0.49\textwidth}
+		\begin{overpic}[width=\textwidth]{figs/FFFF3.png}
+			\put(0,82){\normalsize (c)}
+		\end{overpic}
+		\label{fig:FFFF3}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\begin{overpic}[width=\textwidth]{figs/FFFF4.png}
+			\put(0,82){\normalsize (d)}
+		\end{overpic}
+		\label{fig:FFFF4}
+	\end{subfigure}
+	
+	\vspace{0.6em}
+	
+	% Row 3
+	\begin{subfigure}[t]{0.49\textwidth}
+		\begin{overpic}[width=\textwidth]{figs/FFFF5.png}
+			\put(0,82){\normalsize (e)}
+		\end{overpic}
+		\label{fig:FFFF5}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\begin{overpic}[width=\textwidth]{figs/FFFF6.png}
+			\put(0,82){\normalsize (f)}
+		\end{overpic}
+		\label{fig:FFFF6}
+	\end{subfigure}
+	
+	\caption{\small
+		The first six nonzero mode shapes of a square orthotropic plate with FFFF boundary conditions:
+		(a) the first mode; (b) the second mode; (c) the third mode;
+		(d) the fourth mode; (e) the fifth mode; (f) the sixth mode.}
 	\label{fig:FFFF}
 \end{figure}
-
 
 
 
@@ -875,6 +893,7 @@ Instead of selecting fixed expressions for the mode shape coefficients based on 
 \begin{table}[!htbp] 
 \centering
 \caption{The first seven frequency parameter $2a\Omega$ of of orthotropic rectangular plates with SSSS, SCSF and GCGC boundary conditions.}
+\resizebox{1.1\textwidth}{!}{%
 \begin{tabular}{c c l c c c c c c c}
 	\toprule
 	\multicolumn{3}{c}{} & \multicolumn{7}{c}{$2a\Omega_x=2a\Omega_y=2a\sqrt[4]{\rho h \omega^2/D_{11}}$} \\ 
@@ -910,11 +929,14 @@ Instead of selecting fixed expressions for the mode shape coefficients based on 
 	&     & Present       & 3.4625 & 4.1325 & 5.7475 & 6.0975 & 6.6075 & 7.6425 & 8.0525 \\
 	\bottomrule
 \end{tabular}
+}
 \label{tab:sov1}
 \end{table}
 \begin{table}[!htbp] 
 \centering
+
 \caption{The first seven frequency parameter $2a\Omega$ of of orthotropic rectangular plates with CCCC, SSCC, SCCC and GGCC boundary conditions.}
+\resizebox{1.1\textwidth}{!}{%
 \begin{tabular}{c c l c c c c c c c}
 	\toprule
 	\multicolumn{3}{c}{} & \multicolumn{7}{c}{$2a\Omega_x=2a\Omega_y=2a\sqrt[4]{\rho h \omega^2/D_{11}}$} \\ 
@@ -959,12 +981,14 @@ Instead of selecting fixed expressions for the mode shape coefficients based on 
 	&     & Present       & 2.5825 & 4.2475 & 5.5575 & 6.1525 & 6.4325 & 7.5225 & 8.6725 \\
 	\bottomrule
 \end{tabular}
+}
 \label{tab:sov2}
 \end{table}
 
 \begin{table}[!htbp] 
 \centering
 \caption{The first seven nonzero frequency parameter $2a\Omega$ of of orthotropic rectangular plates with CCFF, CFCF, CFFF and FFFF boundary conditions.}
+\resizebox{1.1\textwidth}{!}{%
 \begin{tabular}{c c l c c c c c c c}
 	\toprule
 	\multicolumn{3}{c}{} & \multicolumn{7}{c}{$2a\Omega_x=2a\Omega_y=2a\sqrt[4]{\rho h \omega^2/D_{11}}$} \\ 
@@ -979,36 +1003,45 @@ Instead of selecting fixed expressions for the mode shape coefficients based on 
 	&     & Present       & 1.9925 & 2.7875 & 4.0725 & 4.7325 & 5.0675 & 5.5125 & 5.7425 \\
 	& 1.5 & Mode number  & (1,1) & (1,2) & (2,1) & (2,2) & (1,3) & (2,3) & (3,1) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 2.1780 & 3.7411 & 4.7931 & 5.5758 & 5.8895 & 7.0263 & 7.9006 \\
+	&     & FEM \Citealp{xing2020improved}   & 2.1736 & 3.7339 & 4.7921 & 5.5646 & 5.8914 & 7.0174 & 7.8986 \\
 	&     & Present       & 2.1775 & 3.7425 & 4.7925 & 5.5725 & 5.8875 & 7.0275 & 7.9025 \\
 	CFCF & 0.5 & Mode number   & (1,1) & (1,2) & (1,3) & (1,4) & (1,5) & (1,6) & (1,7) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 4.7297 & 4.7427 & 4.7881 & 4.8819 & 5.0478 & 5.3072 & 5.6694 \\
 	&     & Present       & 4.7275 & 4.7425 & 4.7875 & 4.8825 & 5.0475 & 5.3075 & 5.6675 \\
 	& 1   & Mode number  & (1,1) & (1,2) & (1,3) & (1,4) & (1,5) & (1,6) & (2,1) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 4.7295 & 4.7817 & 5.0012 & 5.5348 & 6.4407 & 7.6182 & 7.8523 \\
+	&     & FEM \Citealp{xing2020improved}   & 4.7293 & 4.7814 & 5.0006 & 5.5335 & 6.4388 & 7.6160 & 7.8522 \\
 	&     & Present       & 4.7275 & 4.7825 & 5.0025 & 5.5325 & 6.4425 & 7.6175 & 7.8525 \\
 	& 1.5 & Mode number  &(1,1) & (1,2) & (1,3) & (1,4) & (2,1) & (2,2) & (2,3) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 4.7292 & 4.8458 & 5.4221 & 6.7635 & 7.8518 & 7.9470 & 8.3021 \\
 	&     & Present       & 4.7275 & 4.8475 & 5.4225 & 6.7625 & 7.8525 & 7.9475 & 8.3025 \\
 	CFFF & 0.5 & Mode number   & (1,1) & (1,2) & (1,3) & (1,4) & (1,5) & (1,6) & (1,7) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 1.8751 & 1.9439 & 2.1679 & 2.5657 & 3.1106 & 3.7486 & 4.4382 \\
+	&     & FEM \Citealp{xing2020improved}   & 1.8749 & 1.9436 & 2.1654 & 2.5612 & 3.1058 & 3.7441 & 4.4331 \\
 	&     & Present       & 1.8775 & 1.9425 & 2.1675 & 2.5675 & 3.1125 & 3.7475 & 4.4375 \\
 	& 1   & Mode number  &(1,1) & (1,2) & (1,3) & (1,4) & (2,1) & (2,2) & (2,3) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 1.8750 & 2.1242 & 2.9077 & 4.1319 & 4.6937 & 4.8226 & 5.2263 \\
+	&     & FEM \Citealp{xing2020improved}   & 1.8747 & 2.1210 & 2.9020 & 4.1256 & 4.6928 & 4.8221 & 5.2164 \\
 	&     & Present       & 1.8775 & 2.1225 & 2.9075 & 4.1325 & 4.6925 & 4.8225 & 5.2275 \\
 	& 1.5 & Mode number  &(1,1) & (1,2) & (1,3) & (2,1) & (2,2) & (2,3) & (1,4) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 1.8750 & 2.3402 & 3.8522 & 4.6935 & 4.9753 & 5.8314 & 5.9292 \\
+	&     & FEM \Citealp{xing2020improved}   & 1.8746 & 2.3347 & 3.8473 & 4.6935 & 4.9686 & 5.8226 & 5.9279 \\
 	&     & Present       & 1.8775 & 2.3425 & 3.8525 & 4.6925 & 4.9775 & 5.8325 & 5.9275 \\
 	FFFF & 0.5 & Mode number  &(1,3) & (2,2) & (1,4) & (2,3) & (1,5) & (2,4) & (2,5) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 1.1540 & 1.4858 & 1.9157 & 2.1704 & 2.6821 & 2.7881 & 3.4093 \\
+	&     & FEM \Citealp{xing2020improved}   & 1.1531 & 1.4853 & 1.9146 & 2.1686 & 2.6810 & 2.7848 & 3.4050 \\
 	&     & Present       & 1.1525 & 1.4875 & 1.9175 & 2.1725 & 2.6825 & 2.7875 & 3.4075 \\
 	& 1   & Mode number  &(2,2) & (1,3) & (2,3) & (1,4) & (2,4) & (3,1) & (3,2) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 2.1311 & 2.3082 & 3.2734 & 3.8320 & 4.4962 & 4.7298 & 4.9138 \\
+	&     & FEM \Citealp{xing2020improved}   & 2.1283 & 2.3062 & 3.2772 & 3.8291 & 4.4896 & 4.7278 & 4.9124 \\
 	&     & Present       & 2.1325 & 2.3075 & 3.2725 & 3.8325 & 4.4975 & 4.7275 & 4.9125 \\
 	& 1.5 & Mode number  &(2,2) & (1,3) & (2,3) & (3,1) & (3,2) & (1,4) & (3,3) \\
 	&     & extended SOV \Citealp{xing2020extended}   & 2.6277 & 3.4625 & 4.2915 & 4.7296 & 5.1259 & 5.7485 & 6.1588 \\
+	&     & FEM \Citealp{xing2020improved}   & 2.6219 & 3.4589 & 4.2844 & 4.7293 & 5.1189 & 5.7498 & 6.1506 \\
 	&     & Present       & 2.6275 & 3.4625 & 4.2925 & 4.7275 & 5.1275 & 5.7475 & 6.1575 \\
 	\bottomrule
 \end{tabular}
+}
 \label{tab:sov3}
 \end{table}
 \subsection{Rotational spring-supported edges}\label{sec:Rotational spring-supported}
@@ -1023,11 +1056,15 @@ The dimensionless rotational stiffness coefficients are defined as:
 \end{subequations}
 
 The first example considers a square isotropic plate with all four edges rotationally restrained. 
-The vertical translational springs along the four edges are numerically set as $ k^v_{\xi=-1} = k^v_{\xi=1} = k^v_{\eta=-1} = k^v_{\eta=1} = 1 \times 10^{12} \ustif $. 
-The material properties are given as $ D_{11} = D_{22} = D_3 $ and $ v_{12} = v_{21} = 0.3 $.  
+The vertical translational springs along the four edges are numerically set as $ k^v_{\xi=-1} = k^v_{\xi=1} = k^v_{\eta=-1} = k^v_{\eta=1} = 1 \times 10^{11} \ustif $. 
+The material properties are given as $ D_{11} = D_{22} = D_3 $ and $ \nu_{12} = \nu_{21} = 0.3 $.  
 
 \Cref{tab:rot1} presents the frequency parameter $2a\Omega $ for different rotational stiffness coefficients  $ r_{\xi} = r_{\eta} $ with values $ 0.1, 1, 10, 100, $ and $ 1000$.  
 Notably, when $ r_{\xi} = r_{\eta} = 0 $ and $r_{\xi} = r_{\eta} = \infty$, the boundary conditions correspond to SSSS and CCCC, respectively.  
+\Cref{fig:iso} illustrates the variation in mode shapes corresponding to the fundamental natural frequency as the rotational stiffness $r_{\xi} = r_{\eta}$ increases from zero to $\infty$, transitioning the boundary conditions from SSSS to CCCC.
+As the rotational stiffness increases, the edges become more restricted against rotation, leading to higher natural frequencies. 
+Owing to the increased bending resistance, both the slope and the deflection of the mode shape near the boundaries decrease accordingly. 
+Throughout the transition from SSSS to CCCC, the mode shape remains symmetric due to the symmetry of the boundary conditions.
 
 Interestingly, the results indicate that the frequencies $\Omega_x$ and $\Omega_y$ are not strictly equal for some mode shapes under these boundary conditions.  
 The actual frequency $\Omega$ lies between $\Omega_x$ and $\Omega_y$, which may be attributed to the fact that $\Omega_x$ and $\Omega_y$ satisfy Rayleigh’s principle in \Cref{eq:Rayleigh}, representing the weak-form governing equations, but do not necessarily satisfy the strong-form governing equations in \Cref{eq:governing_EOM}.
@@ -1035,56 +1072,52 @@ For a physical problem with exact solutions, both \Cref{eq:Rayleigh,eq:governing
 If this condition is not met, applying \Cref{eq:Rayleigh} still provides a viable approach for approximating the exact solution of the plate.  
 Thus, the exact frequency can be estimated as $\Omega = (\Omega_x + \Omega_y)/2$.  
 As shown in \Cref{tab:rot1}, the maximum difference between \(\Omega\) and the analytical solutions of the finite integral transform method reported in \Citealp{zhang2019new} is less than $1.3\%$.
-\Cref{fig:iso} illustrates the variation in mode shapes corresponding to the fundamental natural frequency as the rotational stiffness $r_{\xi} = r_{\eta}$ increases from zero to $\infty$, transitioning the boundary conditions from SSSS to CCCC.
 
 \begin{figure}[p] % or [H]
-	\centering
-	\resizebox{0.85\textwidth}{!}{%
-		\begin{minipage}{\textwidth}
-		\centering
-		
+	\centering		
 		% Row 1
-		\begin{subfigure}[t]{0.48\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\begin{overpic}[width=\textwidth]{figs/iso0.png}
-				\put(-5,103){\normalsize (a)}
+				\put(0,82){\normalsize (a)}
 			\end{overpic}
 			\label{fig:iso0}
 		\end{subfigure}\hfill
-		\begin{subfigure}[t]{0.48\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\begin{overpic}[width=\textwidth]{figs/iso1.png}
-				\put(-5,103){\normalsize (b)}
+				\put(0,82){\normalsize (b)}
 			\end{overpic}
 			\label{fig:iso1}
 		\end{subfigure}
 		
-		\vspace{0.4em}
+		\vspace{0.6em}
+		
 		
 		% Row 2
-		\begin{subfigure}[t]{0.48\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\begin{overpic}[width=\textwidth]{figs/iso10.png}
-				\put(-5,103){\normalsize (c)}
+				\put(0,82){\normalsize (c)}
 			\end{overpic}
 			\label{fig:iso10}
 		\end{subfigure}\hfill
-		\begin{subfigure}[t]{0.48\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\begin{overpic}[width=\textwidth]{figs/iso20.png}
-				\put(-5,103){\normalsize (d)}
+				\put(0,82){\normalsize (d)}
 			\end{overpic}
 			\label{fig:iso20}
 		\end{subfigure}
 		
-		\vspace{0.4em}
+		\vspace{0.6em}
 		
 		% Row 3
-		\begin{subfigure}[t]{0.48\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\begin{overpic}[width=\textwidth]{figs/iso100.png}
-				\put(-5,103){\normalsize (e)}
+				\put(0,82){\normalsize (e)}
 			\end{overpic}
 			\label{fig:iso100}
 		\end{subfigure}\hfill
-		\begin{subfigure}[t]{0.48\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\begin{overpic}[width=\textwidth]{figs/isoinf.png}
-				\put(-5,103){\normalsize (f)}
+				\put(0,82){\normalsize (f)}
 			\end{overpic}
 			\label{fig:isoinf}
 		\end{subfigure}
@@ -1100,12 +1133,15 @@ As shown in \Cref{tab:rot1}, the maximum difference between \(\Omega\) and the a
 			(f) \(r_{\xi} = r_{\eta} = \infty\) (perfectly clamped edges).
 		}
 		\label{fig:iso}
-		\end{minipage}
-	}
 \end{figure}
 
-\begin{table}[!htbp]
 
+
+
+\begin{table}[!htbp]
+\centering
+\caption{The first six frequency parameters $2a\Omega = 2a\sqrt[4]{\rho h \omega^2 / D_{11}}$ of a square isotropic plate with all four edges rotationally restrained, for rotational stiffness coefficients $r_{\xi} = r_{\eta}$ equal to $0.1$, $1$, $10$, $100$, and $1000$.}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tabular}{c l c c c c c c}
 	\toprule
 	\multicolumn{1}{c}{} & \multicolumn{6}{c}{$2a\Omega$} \\ 
@@ -1159,22 +1195,21 @@ As shown in \Cref{tab:rot1}, the maximum difference between \(\Omega\) and the a
 	\\
 	\bottomrule
 \end{tabular}
+}
 \label{tab:rot1}
 \end{table}
 
 The next example considers a rectangular orthotropic plate with three simply supported edges ($k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=1} = 0$), while the edge at $\eta = -1$ is rotationally restrained. 
-The material properties are consistent with those in \citealp{zhang2019new}, where $2D_{11} = 2D_{22} = D_3$ and $\nu_{12} = \nu_{21} = 0.3$.  
+The material properties are consistent with those in \citealp{zhang2019new}, where $2D_{11} = 2D_{22} = D_3$ and $\nu_{12} = \nu_{21} = 0.3$. 
 \Cref{tab:oth2} shows the fundamental frequency results for different length ratios ($b/a$), comparing them with those reported in \citealp{zhang2019new}. 
 The maximum observed difference is $0.8\%$ when $r_{\eta=-1} = 10$. 
+As expected, increasing the rotational stiffness on the edge at $\eta=-1$ raises the natural frequency by restricting edge rotation and increasing the local bending rigidity. 
 
-Interestingly, in certain numerical calculations involving rotationally restrained boundary conditions, the variables $\alpha_1$ and $\alpha_2$ may take complex values rather than being purely real.  
-Consequently, the mode shape coefficients $A_1$, $A_2$, $B_1$, and $B_2$ become complex-valued, leading to $\mathbf{R}$ and $\mathbf{Q}^{-1}$ being complex matrices.  
-However, the mode shapes $\phi(\xi)$ and $\psi(\eta)$ remain real-valued, and the dynamic stiffness matrix $\mathbf{K} = \mathbf{R}\mathbf{Q}^{-1}$ is a real symmetric matrix.
-Thus, the frequency $\Omega$ can be obtained by solving $\mathbf{K}$ using this enhanced W-W algorithm provided in this study, which avoids solving the eigenvalue equations in both the real and complex domains.
 
 \begin{table}[!htbp]  
 \centering
 \caption{Fundamental frequency parameter $2a\Omega = 2a\sqrt[4]{\rho h \omega^2/D_{11}}$ of rectangular orthotropic plates with three edges simply supported ($k^r_{\xi=-1} = k^r_{\xi=1} = k^r_{\eta=1} = 0$) and the edge at $\eta = -1$ rotationally restrained.}
+\resizebox{1.1\textwidth}{!}{%
 \begin{tabular}{c c c c c c c }
 	\toprule
 	\multicolumn{2}{c}{} & \multicolumn{4}{c}{$2a\Omega$} & \\ 
@@ -1197,19 +1232,61 @@ Thus, the frequency $\Omega$ can be obtained by solving $\mathbf{K}$ using this 
 	& $\infty$  & 4.292 & 4.288 & 4.288 & 4.288 & 0.093 \\ 
 	\bottomrule
 \end{tabular}
+}
 \label{tab:oth2}
 \end{table}
 
+\subsection{Remarks}
+% \addcontentsline{toc}{subsection}{Remarks}
+\begin{enumerate}[label=(\roman*)]
+	\item For the classical S, C, G, and F boundary conditions, the frequency coefficients $(\alpha_{1}, \beta_{1}, \alpha_{2}, \beta_{2})$ are real values as expected. 
+	As a result, the corresponding mode shape coefficients $A_{1}$ to $A_{4}$ and $B_{1}$ to $B_{4}$ are real, and thus the mode shape $\phi(\xi)\psi(\eta)$ is real.
+	However, for elastically restrained boundary conditions, some of the frequency coefficients $(\alpha_{1}, \alpha_{2})$ may become complex. 
+	Consequently, the associated mode shape coefficients $A_{1}$ to $A_{2}$ or $B_{1}$ to $B_{2}$ also take complex values.
+	Nevertheless, the constructed mode shape $\phi(\xi)\psi(\eta)$ must be real to have physical meaning. 
+	Accordingly, by assuming a real-valued mode shape, the mode shape vector $\mathbf{\Phi}_x$ in \Cref{eq:DSM_eqx}, which contains $\phi(\xi)$ and its derivative, is also real. 
+	From \Cref{eq:DSM_eqx}, which gives the relation $\mathbf{R}_x \mathbf{Q}_x^{-1}\mathbf{\Phi}_x = \mathbf{0}$, it follows that the resulting dynamic stiffness matrix $\mathbf{K}_x = \mathbf{R}_x \mathbf{Q}_x^{-1}$ must also be real. 
+	Similarly, the dynamic stiffness matrix $\mathbf{K}_y = \mathbf{R}_y \mathbf{Q}_y^{-1}$ in \Cref{eq:DSM_eqy} is likewise real.
+	In the numerical experiments conducted in this study, it is shown that the imaginary residual of the stiffness matrix is sufficiently small compared to its real part and can be neglected. 
+	Thus, the W-W frequency count is not compromised, and the calculated dynamic stiffness matrices are numerically validated to be real-valued and symmetric.
+	
+	\item For the classical SOV methods, one of the main challenges is to solve the highly nonlinear eigenvalue equations obtained from the governing equations and boundary conditions. 
+	Although the transcendental equations can be simplified for the classical S, C, G, and F boundary conditions, the equations corresponding to elastically restrained boundary conditions become much more complicated and difficult to be simplified. 
+	The solution of classical SOV methods relies heavily on numerical approaches to solve the resulting equations; however, convergence difficulties and large computational cost may arise even for the classical boundary conditions. 
+	As a result, it is difficult for the classical SOV methods to handle elastically restrained boundary conditions. 
+	The calculation time of the classical SOV methods depends on the complexity of the transcendental equations associated with the boundary conditions and the numerical methods selected to solve them. 
+	However, the SOV-DSM method avoids the need to solve any of these equations, regardless of the complexity of the transcendental expressions, and therefore effectively reduces the computational effort compared with the classical SOV approaches.
+	
+	\item Compared with the classical DSM methods, which needs sets of series expansions to capture each exact mode shape, the SOV-DSM requires only a single term for each vibration mode.
+	Due to the SOV-type formulation of the plate, the solution $W(\xi,\eta) = \phi(\xi)\psi(\eta)$ is coupled through both $\phi(\xi)$ and $\psi(\eta)$, each containing both unknown frequency and mode shape coefficients.
+	Thus, the SOV-DSM needs to be solved based on two equations: the governing differential equation in the $x$-direction in \Cref{eq:ODEx}, and the governing differential equation in the $y$-direction in \Cref{eq:ODEy}.
+	As a result, the SOV-DSM method requires solving two dynamic stiffness matrices iteratively in the $x$- and $y$-directions, respectively, whereas classical DSM methods usually require only one dynamic stiffness matrix accounting for both directions.
+	Despite the iterative procedure, the SOV-DSM method remains computationally efficient, since the dimension of each dynamic stiffness matrix is constantly four, while the dimension of a traditional DSM dynamic stiffness matrix could be much larger, depending on the number of truncated series-expansion terms.
+	When capturing high-order natural frequencies, the traditional DSM requires even more terms to maintain accuracy.
+	
+	
+	\item It should be noted that this study is the first to apply an extended SOV-type solution to elastically restrained boundary conditions. 
+	For the classical S, C, G, and F boundary conditions, the two frequencies $\omega_x$ and $\omega_y$ are identical, even though they are treated as independent variables in a mathematical sense. 
+	This is because, from a physical point of view, the natural frequencies obtained separately from the $x$- and $y$-directions should be equal to ensure that the same vibration mode has only one frequency. 
+	However, for elastically restrained boundary conditions, there are some cases where $\omega_x \neq \omega_y$. 
+	Even though the physical frequency obtained from other methods typically lies between $\omega_x$ and $\omega_y$, and the two values are very close, it is difficult to regard either $\omega_x$ or $\omega_y$ individually as the physical frequency of the mode. 
+	Therefore, the average of the two values is adopted as an estimate of the physical frequency.
+	This phenomenon indicates that the SOV-DSM method based on the extended SOV formulation, while highly accurate for the classical S, C, G, and F boundary conditions, may show reduced accuracy for some elastically restrained cases where $\omega_x \neq \omega_y$.
+	A possible reason is that the extended SOV formulation is derived from the weak-form expression based on Rayleigh’s principle, rather than from the strong-form governing differential equation. 
+	Therefore, the extended SOV solutions do not strictly satisfy the strong-form equations, which may contribute to the observed discrepancy for certain elastically restrained boundary conditions.
+		
+\end{enumerate}
+
 \FloatBarrier
 \section{Conclusion}\label{sec:coclusion}
-In this study, a separation-of-variables dynamic stiffness matrix method (SOV-DSM) has been developed for the vibration analysis of orthotropic rectangular plates with general homogeneous boundary conditions. 
+In this study, a separation-of-variables dynamic stiffness method (SOV-DSM) has been developed for the vibration analysis of orthotropic rectangular plates with general homogeneous boundary conditions. 
 The boundary conditions of the SOV-type plate are extended to homogeneous elastically restrained boundaries beyond the classical cases, resulting in two more complex eigenvalue equations. 
 Existing SOV methods face the challenge of solving six unknown variables ($\alpha_1$, $\beta_1$, $\Omega_x$, $\alpha_2$, $\beta_2$, $\Omega_y$) through six eigenvalue equations, which leads to high computational cost and convergence difficulties. 
-To address this, dynamic stiffness matrices are formulated based on the SOV-type plate, and an enhanced Wittrick–Williams (W–W) algorithm is introduced to solve these matrices regardless of the complexity of the highly nonlinear eigenvalue equations derived from them. 
+To address this, dynamic stiffness matrices are formulated based on the extended SOV-type plate, and an enhanced Wittrick–Williams (W–W) algorithm is introduced to solve these matrices regardless of the complexity of the highly nonlinear eigenvalue equations derived from them. 
 This enhanced W–W algorithm resolves the well-known $J_0$ problem by providing an explicit closed-form expression for the $J_0$ term, derived from the characteristics of SOV-type plates. 
 Furthermore, a novel yet simple numerical technique is proposed for mode shape calculation, making it applicable to all boundary conditions.
 
-Classical boundary conditions, such as guided, simply supported, clamped, and free edges, can be realized by setting the translational springs ($k^v$) and rotational springs ($k^r$) along the plate edges to either zero or infinity, as appropriate.  
+Classical boundary conditions, such as guided, simply supported, clamped, and free edges, can be realized by setting the translational springs ($k^v_{\xi}$, $k^v_{\eta}$) and rotational springs ($k^r_{\xi}$, $k^r_{\eta}$) along the plate edges to either zero or infinity, as appropriate.  
 Numerical experiments validate the high accuracy of this approach for these boundary conditions.  
 The results shows that the SOV solution can also be extended to handle elastically restrained boundary conditions.
 Despite certain approximations inherent in few elastically restrained cases, the maximum percentage error across all numerical experiments remains within $1.25\%$. 
@@ -1286,9 +1363,9 @@ the closed-form solution of the $n_x$-th S-G boundary conditions $\Omega_{x,n_x}
 \begin{equation}\label{eq:J_simpx2}
 	b \Omega^4_{x,n_x} =
 	\begin{aligned}
-		&\left[\frac{1}{\chi^2}\left(\frac{n_x\pi}{2}-\frac{\pi}{4}\right)^2 - \frac{D_{12}S_2}{D_{11}S_1} + 2 \frac{D_{66}S_3}{D_{11}S_1}\right]^2 \\
-		&\qquad- \left(\frac{D_{12}S_2}{D_{11}S_1} - 2 \frac{D_{66}S_3}{D_{11}S_1}\right)^2
-		+ \frac{D_{22}S_4}{D_{11}S_1},
+		&\left[\frac{1}{\chi^2}\left(\frac{n_x\pi}{2}-\frac{\pi}{4}\right)^2 - \frac{D_{12}I_2}{D_{11}I_1} + 2 \frac{D_{66}I_3}{D_{11}I_1}\right]^2 \\
+		&\qquad- \left(\frac{D_{12}I_2}{D_{11}I_1} - 2 \frac{D_{66}I_3}{D_{11}I_1}\right)^2
+		+ \frac{D_{22}I_4}{D_{11}I_1},
 	\end{aligned}
 \end{equation}
 %
@@ -1297,9 +1374,9 @@ and the closed-form solution of the $n_y$-th S-G boundary conditions frequency $
 \begin{equation}\label{eq:J_simpy2}
 	a\Omega^4_{y,n_y}= 
 	\begin{aligned}
-		&\frac{D_{22}}{D_{11}}\Biggl\{\left[\chi^2\left(\frac{n_y\pi}{2}-\frac{\pi}{4}\right)^2 - \frac{D_{12}T_2}{D_{22}T_1} + 2 \frac{D_{66}T_3}{D_{22}T_1}\right]^2 \\ 
-		&\qquad - \left(\frac{D_{12}T_2}{D_{22}T_1} - 2 \frac{D_{66}T_3}{D_{22}T_1}\right)^2
-		+ \frac{D_{11}T_4}{D_{22}T_1}\Biggr\}.
+		&\frac{D_{22}}{D_{11}}\Biggl\{\left[\chi^2\left(\frac{n_y\pi}{2}-\frac{\pi}{4}\right)^2 - \frac{D_{12}J_2}{D_{22}J_1} + 2 \frac{D_{66}J_3}{D_{22}J_1}\right]^2 \\ 
+		&\qquad - \left(\frac{D_{12}J_2}{D_{22}J_1} - 2 \frac{D_{66}J_3}{D_{22}J_1}\right)^2
+		+ \frac{D_{11}J_4}{D_{22}J_1}\Biggr\}.
 	\end{aligned}
 \end{equation}
 \end{appendices}
